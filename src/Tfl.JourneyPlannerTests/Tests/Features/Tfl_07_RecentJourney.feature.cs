@@ -98,7 +98,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.When("the user plans for multiple journeys", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
- testRunner.Then("the recent journey can be found in the recent tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then("the recent journeys can be found in the recent tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

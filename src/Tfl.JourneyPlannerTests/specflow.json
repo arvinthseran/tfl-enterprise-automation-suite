@@ -1,0 +1,15 @@
+{
+  "bindingCulture": {
+    "feature": "en-GB"
+  },
+  "language": {
+    "feature": "en-GB"
+  },
+  "stepAssemblies": [
+    { "assembly": "Tfl.ConfigurationBuilder" },
+    { "assembly": "Tfl.Framework" }
+  ],
+  "generator": {
+    "allowRowTests": false
+  }
+}

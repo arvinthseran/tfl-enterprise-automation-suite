@@ -1,5 +1,4 @@
-﻿
-namespace Tfl.Framework.Support;
+﻿namespace Tfl.Framework.Support;
 
 public class TflWebDriver
 {
@@ -15,17 +14,22 @@ public class TflWebDriver
         _webDriver = _webDriverSetupHelper.SetUpWebDriver();
     }
 
-    public string GetText(By by) => FindEnabledAndVisibleElement(by).Text;
+    public IWebDriver GetWebDriver() => _webDriver;
 
-    public void Click(By by) => FindEnabledAndVisibleElement(by).Click();
+    public void SelectByText(By by, string text) => new SelectElement(FindEnabledElement(by)).SelectByText(text);
 
-    public void EnterText(By by, string text)
+    public string GetText(By by) => FindEnabledElement(by).Text;
+
+    public void Click(By by) => FindEnabledElement(by).Click();
+
+    public void EnterText(By by, string text, bool pressTab = true)
     {
         var x = FindElement(by);
 
         x.Clear();
         x.SendKeys(text);
-        x.SendKeys(Keys.Tab);
+
+        if (pressTab) x.SendKeys(Keys.Tab);
     }
 
     public void TakeScreenShot(string pageTitle)
@@ -68,15 +72,23 @@ public class TflWebDriver
 
     public IWebElement FindElement(By by) => _webDriver.FindElement(by);
 
-    public IWebElement FindEnabledAndVisibleElement(By by)
+    public IWebElement FindEnabledAndDisplayedElement(By by) => FindElement(by, (x) => x.Enabled && x.Displayed);
+
+    public IWebElement FindEnabledElement(By by) => FindElement(by, (x) => x.Enabled);
+
+    private IWebElement FindElement(By by, Func<IWebElement, bool> func)
     {
-        return WebDriverWait().Until((driver) => 
+        var wait = WebDriverWait();
+
+        wait.PollingInterval = TimeSpan.FromMilliseconds(1000);
+
+        return wait.Until((driver) =>
         {
             var x = driver.FindElement(by);
 
-            if (x.Enabled && x.Displayed) return x;
+            if (func(x)) return x;
 
-            throw new NotFoundException();
+            throw new NotFoundException(by.ToString());
         });
     }
 

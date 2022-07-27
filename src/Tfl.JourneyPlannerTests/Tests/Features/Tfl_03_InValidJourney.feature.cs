@@ -95,7 +95,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 5
- testRunner.Given("the user wants to travel from \'SM3 9YY\' to \'SM3 8YY\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the user enters an invalid locations", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
  testRunner.When("the user plan a journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");

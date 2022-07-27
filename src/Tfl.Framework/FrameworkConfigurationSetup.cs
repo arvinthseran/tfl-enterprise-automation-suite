@@ -25,6 +25,8 @@ public class FrameworkConfigurationSetup
 
         frameworkConfig.FirefoxDriverLocation = FindFireFoxDriverServiceLocation();
 
+        frameworkConfig.Scenariotags = _context.ScenarioInfo.Tags;
+
         _context.Set(frameworkConfig);
     }
 

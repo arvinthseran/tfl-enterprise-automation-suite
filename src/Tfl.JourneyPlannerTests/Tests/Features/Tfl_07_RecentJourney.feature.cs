@@ -20,22 +20,22 @@ namespace Tfl.JourneyPlannerTests.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Tfl_01_ValidJourney")]
-    public partial class Tfl_01_ValidJourneyFeature
+    [NUnit.Framework.DescriptionAttribute("Tfl_07_RecentJourney")]
+    public partial class Tfl_07_RecentJourneyFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "Tfl_01_ValidJourney.feature"
+#line 1 "Tfl_07_RecentJourney.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "Tfl_01_ValidJourney", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "Tfl_07_RecentJourney", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,15 +74,17 @@ namespace Tfl.JourneyPlannerTests.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Tfl_01_Verify that a valid journey can be planned using the widget")]
+        [NUnit.Framework.DescriptionAttribute("Tfl_07_Verify recent journey")]
         [NUnit.Framework.CategoryAttribute("journeyplanner")]
-        public void Tfl_01_VerifyThatAValidJourneyCanBePlannedUsingTheWidget()
+        [NUnit.Framework.CategoryAttribute("allowallcookies")]
+        public void Tfl_07_VerifyRecentJourney()
         {
             string[] tagsOfScenario = new string[] {
-                    "journeyplanner"};
+                    "journeyplanner",
+                    "allowallcookies"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_01_Verify that a valid journey can be planned using the widget", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 4
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_07_Verify recent journey", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -92,17 +94,14 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 5
+#line 6
  testRunner.Given("the user enters a valid locations", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 6
- testRunner.When("the user plan a journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line hidden
 #line 7
- testRunner.Then("the user should see valid journey results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.When("the user plan a journey from the suggestions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
- testRunner.But("should not see more than one matching location", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "But ");
+ testRunner.Then("the recent journey can be found in the recent tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -20,22 +20,22 @@ namespace Tfl.JourneyPlannerTests.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Tfl_01_ValidJourney")]
-    public partial class Tfl_01_ValidJourneyFeature
+    [NUnit.Framework.DescriptionAttribute("Tfl_05_PlanAJourneyBasedOnArrival")]
+    public partial class Tfl_05_PlanAJourneyBasedOnArrivalFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "Tfl_01_ValidJourney.feature"
+#line 1 "Tfl_05_PlanAJourneyBasedOnArrival.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "Tfl_01_ValidJourney", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "Tfl_05_PlanAJourneyBasedOnArrival", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,14 +74,14 @@ namespace Tfl.JourneyPlannerTests.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Tfl_01_Verify that a valid journey can be planned using the widget")]
+        [NUnit.Framework.DescriptionAttribute("Tfl_05_Plan a journey based on arrival time")]
         [NUnit.Framework.CategoryAttribute("journeyplanner")]
-        public void Tfl_01_VerifyThatAValidJourneyCanBePlannedUsingTheWidget()
+        public void Tfl_05_PlanAJourneyBasedOnArrivalTime()
         {
             string[] tagsOfScenario = new string[] {
                     "journeyplanner"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_01_Verify that a valid journey can be planned using the widget", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_05_Plan a journey based on arrival time", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -96,13 +96,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("the user enters a valid locations", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
- testRunner.When("the user plan a journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the user plan a journey based on arrival time", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
  testRunner.Then("the user should see valid journey results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 8
- testRunner.But("should not see more than one matching location", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "But ");
 #line hidden
             }
             this.ScenarioCleanup();

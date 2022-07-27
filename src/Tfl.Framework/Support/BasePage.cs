@@ -31,7 +31,6 @@ public abstract class BasePage
                 $"{Environment.NewLine}Expected: {PageTitle}" +
                 $"{Environment.NewLine}Actual: {actual}");
         });
-       
     }
 
     internal static void RetryOnException(Action action)

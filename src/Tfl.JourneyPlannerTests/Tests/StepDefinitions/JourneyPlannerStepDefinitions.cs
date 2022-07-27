@@ -52,7 +52,7 @@ public sealed class JourneyPlannerStepDefinitions
     public void ThenTheUserShouldSeeValidJourneyResults() => VerifyValidJourneyResults();
 
     [Then(@"should not see more than one matching location")]
-    public void ThenShouldNotSeeMoreThanOneMatchingLocation() => Assert.AreEqual(false, _journeyResultsPage.IsDisambiguationMessageDisplayed(), "more than one matching location found");
+    public void ThenShouldNotSeeMoreThanOneMatchingLocation() => Assert.AreEqual(false, _journeyResultsPage.IsDisambiguationMessageDisplayed(), "More than one matching location found");
 
     [Then(@"the user shouldn't find matching journey results")]
     public void ThenTheUserShouldntFindMatchingJourneyResults() 
@@ -78,9 +78,8 @@ public sealed class JourneyPlannerStepDefinitions
 
         _planAJourneyPage = _journeyResultsPage.GoToPlanAJourneyPage();
 
-        Assert.AreEqual(true, _planAJourneyPage.IsRecentJourneyItemDisplayed(), "recent journey is not found");
+        Assert.AreEqual(true, _planAJourneyPage.IsRecentJourneyItemDisplayed(), "Recent journey is not found");
     }
-
 
     private void VerifyValidJourneyResults() => StringAssert.Contains("Fastest by public transport", _journeyResultsPage.GetJourneyResults());
 
@@ -90,5 +89,4 @@ public sealed class JourneyPlannerStepDefinitions
 
         return new LandingPage(_context).AcceptCookiesAndGoToPlanAJourneyPage();
     }
-
 }

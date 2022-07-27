@@ -6,7 +6,22 @@ public class WebDriverSetupHelper
 
     public WebDriverSetupHelper(FrameworkConfig frameworkConfig) => _frameworkConfig = frameworkConfig;
 
-    internal IWebDriver GetWebDriver()
+    internal IWebDriver SetUpWebDriver()
+    {
+        var webDriver = GetWebDriver();
+
+        webDriver.Manage().Window.Maximize();
+        webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(_frameworkConfig.ImplicitWait);
+        webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(_frameworkConfig.PageLoad);
+        webDriver.Manage().Cookies.DeleteAllCookies();
+
+        webDriver.SwitchTo().Window(webDriver.CurrentWindowHandle);
+
+        return webDriver;
+    }
+
+
+    private IWebDriver GetWebDriver()
     {
         string browser = _frameworkConfig.Browser;
 

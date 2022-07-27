@@ -1,4 +1,6 @@
-﻿namespace Tfl.JourneyPlannerTests.Support;
+﻿using Tfl.Framework.Support;
+
+namespace Tfl.JourneyPlannerTests.Support;
 
 [Binding]
 public class Hooks
@@ -12,8 +14,8 @@ public class Hooks
     {
         var projectConfig = _context.Get<ProjectConfig>();
 
-        var webDriver = _context.Get<IWebDriver>();
+        var tflWebDriver = _context.Get<TflWebDriver>();
 
-        webDriver.Navigate().GoToUrl(projectConfig.BaseUrl);
+        tflWebDriver.GoToUrl(projectConfig.BaseUrl);
     }
 }

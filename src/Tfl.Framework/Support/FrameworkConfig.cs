@@ -8,10 +8,14 @@ public class FrameworkConfig
 
     public int ImplicitWait { get; init; }
 
+    public int ExplicitWait { get; init; }
+
     public int CommandTimeout { get; init; }
 
     public string ChromeDriverLocation { get; set; }
 
     public string FirefoxDriverLocation { get; set; }
+
+    public string TestAttachmentsDirectoryPath { get; set; }
 
 }

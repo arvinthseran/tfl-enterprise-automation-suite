@@ -19,9 +19,9 @@ public class TflWebDriver
 
     public void SelectByText(By by, string text) => new SelectElement(FindEnabledElement(by)).SelectByText(text);
 
-    public string GetText(By by) => FindEnabledAndDisplayedElement(by).Text;
+    public string GetText(By by) => FindEnabledElement(by).Text;
 
-    public void Click(By by) => FindEnabledAndDisplayedElement(by).Click();
+    public void Click(By by) => FindEnabledElement(by).Click();
 
     public void EnterText(By by, string text)
     {

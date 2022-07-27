@@ -74,16 +74,16 @@ namespace Tfl.JourneyPlannerTests.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Tfl_04_NoLocation that the widget is unable to plan a journey if no locations are" +
-            " entered")]
+        [NUnit.Framework.DescriptionAttribute("Tfl_04_Verify that the widget is unable to plan a journey if no locations are ent" +
+            "ered")]
         [NUnit.Framework.CategoryAttribute("journeyplanner")]
-        public void Tfl_04_NoLocationThatTheWidgetIsUnableToPlanAJourneyIfNoLocationsAreEntered()
+        public void Tfl_04_VerifyThatTheWidgetIsUnableToPlanAJourneyIfNoLocationsAreEntered()
         {
             string[] tagsOfScenario = new string[] {
                     "journeyplanner"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_04_NoLocation that the widget is unable to plan a journey if no locations are" +
-                    " entered", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_04_Verify that the widget is unable to plan a journey if no locations are ent" +
+                    "ered", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

@@ -1,54 +1,52 @@
+
 namespace Tfl.JourneyPlannerTests.StepDefinitions;
+
 
 [Binding]
 public sealed class JourneyPlannerStepDefinitions
 {
     private readonly ScenarioContext _context;
 
-    private string _journeyFrom,_journeyTo;
+    private readonly DataHelpers _dataHelpers;
+
+    public (string from, string to) _journeyDetails;
 
     private PlanAJourneyPage _planAJourneyPage;
     private JourneyResultsPage _journeyResultsPage;
 
-    public JourneyPlannerStepDefinitions(ScenarioContext context) => _context = context;
-
-    [Given(@"the user wants to travel from '([^']*)' to '([^']*)'")]
-    public void GivenTheUserWantsToTravelFromTo(string from, string to)
+    public JourneyPlannerStepDefinitions(ScenarioContext context) 
     {
-        _journeyFrom = from;
-
-        _journeyTo = to;
-
-        _planAJourneyPage = GoToPlanAJourneyPage();
+        _context = context; 
+        _dataHelpers = context.Get<DataHelpers>();
     }
+    
+    [Given(@"the user enters a valid locations")]
+    public void GivenTheUserEntersAValidLocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.ValidJourney);
+
+    [Given(@"the user enters an invalid locations")]
+    public void GivenTheUserEntersAnValidLocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.InValidJourney);
+
+    [Given(@"the user enters a multiple locations")]
+    public void GivenTheUserEntersAMultipleLocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.MultipleLocation);
 
     [Given(@"the user does not have a location")]
-    public void GivenTheUserDoesNotHaveALocations()
-    {
-        _journeyFrom = String.Empty;
-
-        _journeyTo = String.Empty;
-
-        _planAJourneyPage = GoToPlanAJourneyPage();
-    }
-
+    public void GivenTheUserDoesNotHaveALocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.EmptyLocation);     
 
     [When(@"the user plan a journey with no locations")]
     public void WhenTheUserPlanAJourneyWithNoLocations() => _planAJourneyPage = _planAJourneyPage.UserPlansAJourneyWithNoLocations();
 
     [When(@"the user plan a journey")]
-    public void WhenTheUserPlanAJourney() => _journeyResultsPage  = _planAJourneyPage.UserPlansAJourney(_journeyFrom, _journeyTo);
+    public void WhenTheUserPlanAJourney() => _journeyResultsPage  = _planAJourneyPage.UserPlansAJourney(_journeyDetails.from, _journeyDetails.to);
 
     [When(@"the user plan a journey based on arrival time")]
-    public void WhenTheUserPlanAJourneyBasedOnArrivalTime() => _journeyResultsPage = _planAJourneyPage.UserPlansAJourneyBasedOnArrival(_journeyFrom, _journeyTo);
+    public void WhenTheUserPlanAJourneyBasedOnArrivalTime() => _journeyResultsPage = _planAJourneyPage.UserPlansAJourneyBasedOnArrival(_journeyDetails.from, _journeyDetails.to);
 
     [Then(@"the user should see more than one matching location")]
     public void ThenTheUserShouldSeeMoreThanOneMatchingLocation() 
         => StringAssert.Contains("We found more than one location matching", _journeyResultsPage.GetDisambiguationMessage());
 
     [Then(@"the user should see valid journey results")]
-    public void ThenTheUserShouldSeeValidJourneyResults() 
-        => StringAssert.Contains("Fastest by public transport", _journeyResultsPage.GetJourneyResults());
+    public void ThenTheUserShouldSeeValidJourneyResults() => VerifyValidJourneyResults();
 
     [Then(@"should not see more than one matching location")]
     public void ThenShouldNotSeeMoreThanOneMatchingLocation() => Assert.AreEqual(false, _journeyResultsPage.IsDisambiguationMessageDisplayed(), "more than one matching location found");
@@ -67,7 +65,27 @@ public sealed class JourneyPlannerStepDefinitions
         });
     }
 
+    [Then(@"the user can edit the journey")]
+    public void ThenTheUserCanEditTheJourney() => _journeyResultsPage = _journeyResultsPage.EditJourney();
 
-    private PlanAJourneyPage GoToPlanAJourneyPage() => new LandingPage(_context).GoToPlanAJourneyPage();
+    [Then(@"the recent journey can be found in the recent tab")]
+    public void ThenTheRecentJourneyCanBeFoundInTheRecentTab()
+    {
+        VerifyValidJourneyResults();
+
+        _planAJourneyPage = _journeyResultsPage.GoToPlanAJourneyPage();
+
+        StringAssert.Contains($"{_journeyDetails.from} to {_journeyDetails.to}", _planAJourneyPage.GetReentJourneyItem());  
+    }
+
+
+    private void VerifyValidJourneyResults() => StringAssert.Contains("Fastest by public transport", _journeyResultsPage.GetJourneyResults());
+
+    private PlanAJourneyPage GoToPlanAJourneyPage((string from, string to) journeyDetails)
+    {
+        _journeyDetails = journeyDetails;
+
+        return new LandingPage(_context).AcceptCookiesAndGoToPlanAJourneyPage();
+    }
 
 }

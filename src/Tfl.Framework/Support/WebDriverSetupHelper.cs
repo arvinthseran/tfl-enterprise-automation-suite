@@ -14,7 +14,6 @@ public class WebDriverSetupHelper
         SetImplicitWait(webDriver);
         webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(_frameworkConfig.PageLoad);
         webDriver.Manage().Cookies.DeleteAllCookies();
-
         webDriver.SwitchTo().Window(webDriver.CurrentWindowHandle);
 
         return webDriver;
@@ -23,7 +22,6 @@ public class WebDriverSetupHelper
     internal void SetImplicitWait(IWebDriver webDriver) => SetImplicitWait(webDriver, TimeSpan.FromSeconds(_frameworkConfig.ImplicitWait));
 
     internal void SetImplicitWait(IWebDriver webDriver, TimeSpan value) => webDriver.Manage().Timeouts().ImplicitWait = value;
-
 
     private IWebDriver GetWebDriver()
     {
@@ -37,13 +35,16 @@ public class WebDriverSetupHelper
         };
     }
 
-    private static ChromeOptions AddArguments()
+    private ChromeOptions AddArguments()
     {
         var chromeOptions = new ChromeOptions();
         chromeOptions.AddArgument("no-sandbox");
         chromeOptions.AddArgument("ignore-certificate-errors");
+        if (AllowAllCookies()) chromeOptions.AddUserProfilePreference("profile.cookie_controls_mode", 0);
         chromeOptions.UnhandledPromptBehavior = UnhandledPromptBehavior.Accept;
         chromeOptions.PageLoadStrategy = PageLoadStrategy.None;
         return chromeOptions;
     }
+
+    private bool AllowAllCookies() => _frameworkConfig.Scenariotags.Contains("allowallcookies");
 }

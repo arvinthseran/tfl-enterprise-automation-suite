@@ -1,7 +1,7 @@
 ﻿
 namespace Tfl.JourneyPlannerTests.Tests.Pages;
 
-public class LandingPage : BasePage
+public class LandingPage : ProjectBasePage
 {
     private static By AcceptCookies => By.CssSelector("#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll");
 
@@ -16,7 +16,7 @@ public class LandingPage : BasePage
 
     protected override string PageTitle => "Your cookie settings";
 
-    public PlanAJourneyPage GoToPlanAJourneyPage()
+    public PlanAJourneyPage AcceptCookiesAndGoToPlanAJourneyPage()
     {
         driver.FindEnabledAndDisplayedElement(AcceptCookies).Click();
         driver.FindEnabledAndDisplayedElement(SaveCookiesSettings).Click();

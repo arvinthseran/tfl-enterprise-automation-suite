@@ -18,4 +18,6 @@ public class FrameworkConfig
 
     public string TestAttachmentsDirectoryPath { get; set; }
 
+    public string[] Scenariotags { get; set; }
+
 }

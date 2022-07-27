@@ -1,24 +1,17 @@
 ﻿
 namespace Tfl.JourneyPlannerTests.Tests.Pages;
 
-public class PlanAJourneyPage : BasePage
+public class PlanAJourneyPage : PlanAJourneyForm
 {
-    private static By JourneyFrom => By.CssSelector("#InputFrom");
-
-    private static By JourneyTo => By.CssSelector("#InputTo");
-
-    private static By PlanJourneyButton => By.CssSelector("#plan-journey-button");
-
     private static By InputFromError => By.CssSelector("#InputFrom-error");
 
     private static By InputToError => By.CssSelector("#InputTo-error");
 
     private static By ChangeDepartureTime => By.CssSelector(".change-departure-time");
 
-    private static By Arriving => By.CssSelector("label[for='arriving']");
+    private static By RecentTab => By.CssSelector("#jp-recent-tab-home");
 
-    private static By DateSelector => By.CssSelector("#Date");
-
+    private static By RecentJourneyItems => By.CssSelector(".journey-item");
 
     public PlanAJourneyPage(ScenarioContext context) : base(context)
     {
@@ -39,7 +32,7 @@ public class PlanAJourneyPage : BasePage
         EnterJourney(from, to);
         driver.Click(ChangeDepartureTime);
         driver.Click(Arriving);
-        driver.SelectByText(DateSelector, "Tomorrow");
+        SelectTomorrow();
         return GoToJourneyResultsPage();
     }
 
@@ -59,9 +52,9 @@ public class PlanAJourneyPage : BasePage
         driver.EnterText(JourneyTo, to);
     }
 
-    private JourneyResultsPage GoToJourneyResultsPage()
+    public string GetReentJourneyItem()
     {
-        driver.Click(PlanJourneyButton);
-        return new(context);
+        driver.Click(RecentTab);
+        return driver.GetText(RecentJourneyItems);
     }
 }

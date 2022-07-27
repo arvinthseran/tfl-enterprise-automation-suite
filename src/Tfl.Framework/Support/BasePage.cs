@@ -21,12 +21,28 @@ public abstract class BasePage
 
     protected void VerifyPage()
     {
-        var actual = driver.FindElement(PageHeader).Text;
-
         driver.TakeScreenShot(PageTitle);
 
-        StringAssert.Contains(PageTitle, actual, $"Page verification failed:" +
-            $"{Environment.NewLine}Expected: {PageTitle}" +
-            $"{Environment.NewLine}Actual: {actual}");
+        RetryOnException(() => 
+        {
+            var actual = driver.FindElement(PageHeader).Text;
+
+            StringAssert.Contains(PageTitle, actual, $"Page verification failed:" +
+                $"{Environment.NewLine}Expected: {PageTitle}" +
+                $"{Environment.NewLine}Actual: {actual}");
+        });
+       
+    }
+
+    internal static void RetryOnException(Action action)
+    {
+        Policy
+            .Handle<Exception>()
+            .WaitAndRetry(new TimeSpan[] { TimeSpan.FromSeconds(1), TimeSpan.FromSeconds(2), TimeSpan.FromSeconds(3) })
+            .Execute(() =>
+             {
+                 using var testcontext = new NUnit.Framework.Internal.TestExecutionContext.IsolatedContext();
+                 action();
+             });
     }
 }

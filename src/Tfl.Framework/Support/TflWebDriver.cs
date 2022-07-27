@@ -1,15 +1,31 @@
-﻿using NUnit.Framework;
+﻿
 namespace Tfl.Framework.Support;
 
 public class TflWebDriver
 {
     private readonly IWebDriver _webDriver;
     private readonly FrameworkConfig _frameworkConfig;
+    private readonly WebDriverSetupHelper _webDriverSetupHelper;
+
 
     public TflWebDriver(FrameworkConfig frameworkConfig)
     {
         _frameworkConfig = frameworkConfig;
-        _webDriver = new WebDriverSetupHelper(_frameworkConfig).SetUpWebDriver();
+        _webDriverSetupHelper = new WebDriverSetupHelper(_frameworkConfig);
+        _webDriver = _webDriverSetupHelper.SetUpWebDriver();
+    }
+
+    public string GetText(By by) => FindEnabledAndVisibleElement(by).Text;
+
+    public void Click(By by) => FindEnabledAndVisibleElement(by).Click();
+
+    public void EnterText(By by, string text)
+    {
+        var x = FindElement(by);
+
+        x.Clear();
+        x.SendKeys(text);
+        x.SendKeys(Keys.Tab);
     }
 
     public void TakeScreenShot(string pageTitle)
@@ -38,6 +54,17 @@ public class TflWebDriver
     }
 
     public void GoToUrl(string url) => _webDriver.Navigate().GoToUrl(url);
+
+    public List<IWebElement> TryToFindNotVisibleElements(By by) 
+    {
+        _webDriverSetupHelper.SetImplicitWait(_webDriver, TimeSpan.FromMilliseconds(500));
+
+        var result = _webDriver.FindElements(by).ToList();
+
+        _webDriverSetupHelper.SetImplicitWait(_webDriver);
+
+        return result;
+    }
 
     public IWebElement FindElement(By by) => _webDriver.FindElement(by);
 

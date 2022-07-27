@@ -11,7 +11,7 @@ public class WebDriverSetupHelper
         var webDriver = GetWebDriver();
 
         webDriver.Manage().Window.Maximize();
-        webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(_frameworkConfig.ImplicitWait);
+        SetImplicitWait(webDriver);
         webDriver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(_frameworkConfig.PageLoad);
         webDriver.Manage().Cookies.DeleteAllCookies();
 
@@ -19,6 +19,10 @@ public class WebDriverSetupHelper
 
         return webDriver;
     }
+
+    internal void SetImplicitWait(IWebDriver webDriver) => SetImplicitWait(webDriver, TimeSpan.FromSeconds(_frameworkConfig.ImplicitWait));
+
+    internal void SetImplicitWait(IWebDriver webDriver, TimeSpan value) => webDriver.Manage().Timeouts().ImplicitWait = value;
 
 
     private IWebDriver GetWebDriver()

@@ -15,12 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Drivers\" />
+    <ProjectReference Include="..\Tfl.ConfigurationBuilder\Tfl.ConfigurationBuilder.csproj" />
+    <ProjectReference Include="..\Tfl.Framework\Tfl.Framework.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Tfl.ConfigurationBuilder\Tfl.ConfigurationBuilder.csproj" />
-    <ProjectReference Include="..\Tfl.Framework\Tfl.Framework.csproj" />
+    <Compile Update="NUnitConfigurator.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

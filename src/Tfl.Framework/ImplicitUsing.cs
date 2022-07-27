@@ -11,3 +11,4 @@ global using System;
 global using Tfl.Framework.Support;
 global using NUnit.Framework;
 global using OpenQA.Selenium.Support.UI;
+global using System.Collections.Generic;

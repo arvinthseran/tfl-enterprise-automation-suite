@@ -8,8 +8,12 @@ public abstract class BasePage
 
     protected readonly TflWebDriver driver;
 
+    protected readonly ScenarioContext context;
+
     public BasePage(ScenarioContext context, bool verifyPage = true)
     {
+        this.context = context;
+
         driver = context.Get<TflWebDriver>();
 
         if (verifyPage) VerifyPage();

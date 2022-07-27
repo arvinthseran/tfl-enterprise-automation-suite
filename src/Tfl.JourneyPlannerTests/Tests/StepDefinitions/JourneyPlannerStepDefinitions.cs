@@ -19,8 +19,22 @@ public sealed class JourneyPlannerStepDefinitions
 
         _journeyTo = to;
 
-        _planAJourneyPage =  new LandingPage(_context).GoToPlanAJourneyPage();
+        _planAJourneyPage = GoToPlanAJourneyPage();
     }
+
+    [Given(@"the user does not have a location")]
+    public void GivenTheUserDoesNotHaveALocations()
+    {
+        _journeyFrom = String.Empty;
+
+        _journeyTo = String.Empty;
+
+        _planAJourneyPage = GoToPlanAJourneyPage();
+    }
+
+
+    [When(@"the user plan a journey with no locations")]
+    public void WhenTheUserPlanAJourneyWithNoLocations() => _planAJourneyPage = _planAJourneyPage.UserPlansAJourneyWithNoLocations();
 
     [When(@"the user plan a journey")]
     public void WhenTheUserPlanAJourney() => _journeyResultsPage  = _planAJourneyPage.UserPlansAJourney(_journeyFrom, _journeyTo);
@@ -39,5 +53,18 @@ public sealed class JourneyPlannerStepDefinitions
     [Then(@"the user shouldn't find matching journey results")]
     public void ThenTheUserShouldntFindMatchingJourneyResults() 
         => StringAssert.Contains("we can't find a journey matching your criteria", _journeyResultsPage.GetFieldValidationErrors());
+
+    [Then(@"the user is unable to plan a journey")]
+    public void ThenTheUserIsUnableToPlanAJourney()
+    {
+        Assert.Multiple(() =>
+        {
+            StringAssert.Contains("The From field is required.", _planAJourneyPage.GetInputFromError());
+            StringAssert.Contains("The To field is required.", _planAJourneyPage.GetInputToError());
+        });
+    }
+
+
+    private PlanAJourneyPage GoToPlanAJourneyPage() => new LandingPage(_context).GoToPlanAJourneyPage();
 
 }

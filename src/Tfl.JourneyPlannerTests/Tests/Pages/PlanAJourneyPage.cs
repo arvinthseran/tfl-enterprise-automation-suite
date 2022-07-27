@@ -9,6 +9,11 @@ public class PlanAJourneyPage : BasePage
 
     private static By PlanJourneyButton => By.CssSelector("#plan-journey-button");
 
+    private static By InputFromError => By.CssSelector("#InputFrom-error");
+
+    private static By InputToError => By.CssSelector("#InputTo-error");
+
+
     public PlanAJourneyPage(ScenarioContext context) : base(context)
     {
     }
@@ -24,4 +29,14 @@ public class PlanAJourneyPage : BasePage
         driver.Click(PlanJourneyButton);
         return new(context);
     }
+
+    public PlanAJourneyPage UserPlansAJourneyWithNoLocations()
+    {
+        driver.Click(PlanJourneyButton);
+        return new(context);
+    }
+
+    public string GetInputFromError() => driver.GetText(InputFromError);
+
+    public string GetInputToError() => driver.GetText(InputToError);
 }

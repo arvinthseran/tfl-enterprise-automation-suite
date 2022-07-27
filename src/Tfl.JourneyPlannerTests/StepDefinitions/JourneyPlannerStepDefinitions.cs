@@ -8,19 +8,19 @@ public sealed class JourneyPlannerStepDefinitions
     [Given(@"the user wants to travel from '([^']*)' to '([^']*)'")]
     public void GivenTheUserWantsToTravelFromTo(string from, string to)
     {
-        throw new PendingStepException();
+        
     }
 
     [When(@"the user plan a journey")]
     public void WhenTheUserPlanAJourney()
     {
-        throw new PendingStepException();
+        
     }
 
     [Then(@"the user should see valid journey results")]
     public void ThenTheUserShouldSeeValidJourneyResults()
     {
-        throw new PendingStepException();
+        
     }
 
 }

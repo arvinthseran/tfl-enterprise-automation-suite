@@ -39,6 +39,9 @@ public sealed class JourneyPlannerStepDefinitions
     [When(@"the user plan a journey")]
     public void WhenTheUserPlanAJourney() => _journeyResultsPage  = _planAJourneyPage.UserPlansAJourney(_journeyFrom, _journeyTo);
 
+    [When(@"the user plan a journey based on arrival time")]
+    public void WhenTheUserPlanAJourneyBasedOnArrivalTime() => _journeyResultsPage = _planAJourneyPage.UserPlansAJourneyBasedOnArrival(_journeyFrom, _journeyTo);
+
     [Then(@"the user should see more than one matching location")]
     public void ThenTheUserShouldSeeMoreThanOneMatchingLocation() 
         => StringAssert.Contains("We found more than one location matching", _journeyResultsPage.GetDisambiguationMessage());

@@ -1,4 +1,6 @@
 ﻿
+using OpenQA.Selenium.Support.UI;
+
 namespace Tfl.Framework.Support;
 
 public class TflWebDriver
@@ -15,9 +17,11 @@ public class TflWebDriver
         _webDriver = _webDriverSetupHelper.SetUpWebDriver();
     }
 
-    public string GetText(By by) => FindEnabledAndVisibleElement(by).Text;
+    public void SelectByText(By by, string text) => new SelectElement(FindEnabledElement(by)).SelectByText(text);
 
-    public void Click(By by) => FindEnabledAndVisibleElement(by).Click();
+    public string GetText(By by) => FindEnabledAndDisplayedElement(by).Text;
+
+    public void Click(By by) => FindEnabledAndDisplayedElement(by).Click();
 
     public void EnterText(By by, string text)
     {
@@ -68,15 +72,23 @@ public class TflWebDriver
 
     public IWebElement FindElement(By by) => _webDriver.FindElement(by);
 
-    public IWebElement FindEnabledAndVisibleElement(By by)
+    public IWebElement FindEnabledAndDisplayedElement(By by) => FindElement(by, (x) => x.Enabled && x.Displayed);
+
+    public IWebElement FindEnabledElement(By by) => FindElement(by, (x) => x.Enabled);
+
+    private IWebElement FindElement(By by, Func<IWebElement, bool> func)
     {
-        return WebDriverWait().Until((driver) => 
+        var wait = WebDriverWait();
+
+        wait.PollingInterval = TimeSpan.FromMilliseconds(1000);
+
+        return wait.Until((driver) =>
         {
             var x = driver.FindElement(by);
 
-            if (x.Enabled && x.Displayed) return x;
+            if (func(x)) return x;
 
-            throw new NotFoundException();
+            throw new NotFoundException(by.ToString());
         });
     }
 

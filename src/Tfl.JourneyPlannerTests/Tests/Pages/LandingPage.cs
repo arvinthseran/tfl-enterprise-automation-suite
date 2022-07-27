@@ -18,8 +18,8 @@ public class LandingPage : BasePage
 
     public PlanAJourneyPage GoToPlanAJourneyPage()
     {
-        driver.FindEnabledAndVisibleElement(AcceptCookies).Click();
-        driver.FindEnabledAndVisibleElement(SaveCookiesSettings).Click();
+        driver.FindEnabledAndDisplayedElement(AcceptCookies).Click();
+        driver.FindEnabledAndDisplayedElement(SaveCookiesSettings).Click();
         return new(context);
     }
 }

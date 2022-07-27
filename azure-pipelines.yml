@@ -57,6 +57,14 @@ steps:
     TargetFolder: '$(build.artifactstagingdirectory)/publish'
     OverWrite: true
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(build.artifactstagingdirectory)/tests'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(build.artifactstagingdirectory)/publish/tests.zip'
+    replaceExistingArchive: true
+
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:

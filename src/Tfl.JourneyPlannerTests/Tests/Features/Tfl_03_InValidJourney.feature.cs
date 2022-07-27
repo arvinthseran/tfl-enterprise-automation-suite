@@ -20,22 +20,22 @@ namespace Tfl.JourneyPlannerTests.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("ValidJourney")]
-    public partial class ValidJourneyFeature
+    [NUnit.Framework.DescriptionAttribute("Tfl_03_InValidJourney")]
+    public partial class Tfl_03_InValidJourneyFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "ValidJourney.feature"
+#line 1 "Tfl_03_InValidJourney.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "ValidJourney", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "Tfl_03_InValidJourney", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,14 +74,16 @@ namespace Tfl.JourneyPlannerTests.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Tfl_01_Verify that a valid journey can be planned using the widget.")]
+        [NUnit.Framework.DescriptionAttribute("Tfl_03_Verify that the widget is unable to provide results for an invalid journey" +
+            "")]
         [NUnit.Framework.CategoryAttribute("journeyplanner")]
-        public void Tfl_01_VerifyThatAValidJourneyCanBePlannedUsingTheWidget_()
+        public void Tfl_03_VerifyThatTheWidgetIsUnableToProvideResultsForAnInvalidJourney()
         {
             string[] tagsOfScenario = new string[] {
                     "journeyplanner"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_01_Verify that a valid journey can be planned using the widget.", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_03_Verify that the widget is unable to provide results for an invalid journey" +
+                    "", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -93,17 +95,13 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 5
- testRunner.Given("the user wants to travel from \'West Sutton Rail Station\' to \'North Greenwich Unde" +
-                        "rground Station\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Given("the user wants to travel from \'SM3 9YY\' to \'SM3 8YY\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 6
  testRunner.When("the user plan a journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 7
- testRunner.Then("the user should see valid journey results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-#line 8
- testRunner.But("should not see more than one matching location", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "But ");
+ testRunner.Then("the user shouldn\'t find matching journey results", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

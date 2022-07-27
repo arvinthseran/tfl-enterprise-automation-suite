@@ -20,8 +20,8 @@ namespace Tfl.JourneyPlannerTests.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Tfl_03_InValidJourney")]
-    public partial class Tfl_03_InValidJourneyFeature
+    [NUnit.Framework.DescriptionAttribute("Tfl_02_InValidJourney")]
+    public partial class Tfl_02_InValidJourneyFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
@@ -35,7 +35,7 @@ namespace Tfl.JourneyPlannerTests.Tests.Features
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "Tfl_03_InValidJourney", null, ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "Tfl_02_InValidJourney", null, ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,15 +74,15 @@ namespace Tfl.JourneyPlannerTests.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Tfl_03_Verify that the widget is unable to provide results for an invalid journey" +
+        [NUnit.Framework.DescriptionAttribute("Tfl_02_Verify that the widget is unable to provide results for an invalid journey" +
             "")]
         [NUnit.Framework.CategoryAttribute("journeyplanner")]
-        public void Tfl_03_VerifyThatTheWidgetIsUnableToProvideResultsForAnInvalidJourney()
+        public void Tfl_02_VerifyThatTheWidgetIsUnableToProvideResultsForAnInvalidJourney()
         {
             string[] tagsOfScenario = new string[] {
                     "journeyplanner"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_03_Verify that the widget is unable to provide results for an invalid journey" +
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_02_Verify that the widget is unable to provide results for an invalid journey" +
                     "", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);

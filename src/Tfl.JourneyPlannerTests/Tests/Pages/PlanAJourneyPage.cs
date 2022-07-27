@@ -1,4 +1,6 @@
 ﻿
+using OpenQA.Selenium.Interactions;
+
 namespace Tfl.JourneyPlannerTests.Tests.Pages;
 
 public class PlanAJourneyPage : PlanAJourneyForm
@@ -13,9 +15,11 @@ public class PlanAJourneyPage : PlanAJourneyForm
 
     private static By RecentJourneyItems => By.CssSelector(".journey-item");
 
-    public PlanAJourneyPage(ScenarioContext context) : base(context)
-    {
-    }
+    private static By InputFromDropdown => By.CssSelector("#InputFrom-dropdown .stop-name");
+
+    private static By InputToDropdown => By.CssSelector("#InputTo-dropdown .stop-name");
+
+    public PlanAJourneyPage(ScenarioContext context) : base(context) { }
 
     protected override By PageHeader => By.CssSelector("#hp-journey-planner > .content");
 
@@ -24,6 +28,15 @@ public class PlanAJourneyPage : PlanAJourneyForm
     public JourneyResultsPage UserPlansAJourney(string from, string to)
     {
         EnterJourney(from, to);
+        return GoToJourneyResultsPage();
+    }
+
+    public JourneyResultsPage UserPlansAJourneyFromSuggestions(string from, string to)
+    {
+        EnterJourneyInput(InputFrom, InputFromDropdown, from);
+
+        EnterJourneyInput(InputTo, InputToDropdown, to);
+
         return GoToJourneyResultsPage();
     }
 
@@ -48,13 +61,22 @@ public class PlanAJourneyPage : PlanAJourneyForm
 
     private void EnterJourney(string from, string to)
     {
-        driver.EnterText(JourneyFrom, from);
-        driver.EnterText(JourneyTo, to);
+        driver.EnterText(InputFrom, from);
+        driver.EnterText(InputTo, to);
     }
 
-    public string GetReentJourneyItem()
+    public bool IsRecentJourneyItemDisplayed()
     {
         driver.Click(RecentTab);
-        return driver.GetText(RecentJourneyItems);
+        return driver.TryToFindNotVisibleElements(RecentJourneyItems).Count >= 1;
+    }
+
+    private void EnterJourneyInput(By textbox, By dropdown, string text)
+    {
+        driver.EnterText(textbox, text, false);
+
+        var element = driver.FindEnabledAndDisplayedElement(dropdown);
+
+        new Actions(driver.GetWebDriver()).MoveToElement(element).Click(element).Perform();
     }
 }

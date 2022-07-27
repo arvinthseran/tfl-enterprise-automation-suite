@@ -98,7 +98,7 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.Given("the user enters a valid locations", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
 #line 7
- testRunner.When("the user plan a journey", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When("the user plan a journey from the suggestions", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 8
  testRunner.Then("the recent journey can be found in the recent tab", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");

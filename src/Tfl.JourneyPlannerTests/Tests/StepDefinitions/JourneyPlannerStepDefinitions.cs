@@ -19,7 +19,7 @@ public sealed class JourneyPlannerStepDefinitions
         _context = context; 
         _dataHelpers = context.Get<DataHelpers>();
     }
-    
+
     [Given(@"the user enters a valid locations")]
     public void GivenTheUserEntersAValidLocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.ValidJourney);
 
@@ -30,7 +30,10 @@ public sealed class JourneyPlannerStepDefinitions
     public void GivenTheUserEntersAMultipleLocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.MultipleLocation);
 
     [Given(@"the user does not have a location")]
-    public void GivenTheUserDoesNotHaveALocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.EmptyLocation);     
+    public void GivenTheUserDoesNotHaveALocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.EmptyLocation);
+
+    [When(@"the user plan a journey from the suggestions")]
+    public void WhenTheUserPlanAJourneyFromTheSuggestions() => _journeyResultsPage = _planAJourneyPage.UserPlansAJourneyFromSuggestions(_journeyDetails.from, _journeyDetails.to);
 
     [When(@"the user plan a journey with no locations")]
     public void WhenTheUserPlanAJourneyWithNoLocations() => _planAJourneyPage = _planAJourneyPage.UserPlansAJourneyWithNoLocations();
@@ -75,7 +78,7 @@ public sealed class JourneyPlannerStepDefinitions
 
         _planAJourneyPage = _journeyResultsPage.GoToPlanAJourneyPage();
 
-        StringAssert.Contains($"{_journeyDetails.from} to {_journeyDetails.to}", _planAJourneyPage.GetReentJourneyItem());  
+        Assert.AreEqual(true, _planAJourneyPage.IsRecentJourneyItemDisplayed(), "recent journey is not found");
     }
 
 

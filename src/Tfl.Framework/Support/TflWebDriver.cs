@@ -1,7 +1,4 @@
-﻿
-using OpenQA.Selenium.Support.UI;
-
-namespace Tfl.Framework.Support;
+﻿namespace Tfl.Framework.Support;
 
 public class TflWebDriver
 {
@@ -17,19 +14,22 @@ public class TflWebDriver
         _webDriver = _webDriverSetupHelper.SetUpWebDriver();
     }
 
+    public IWebDriver GetWebDriver() => _webDriver;
+
     public void SelectByText(By by, string text) => new SelectElement(FindEnabledElement(by)).SelectByText(text);
 
     public string GetText(By by) => FindEnabledElement(by).Text;
 
     public void Click(By by) => FindEnabledElement(by).Click();
 
-    public void EnterText(By by, string text)
+    public void EnterText(By by, string text, bool pressTab = true)
     {
         var x = FindElement(by);
 
         x.Clear();
         x.SendKeys(text);
-        x.SendKeys(Keys.Tab);
+
+        if (pressTab) x.SendKeys(Keys.Tab);
     }
 
     public void TakeScreenShot(string pageTitle)

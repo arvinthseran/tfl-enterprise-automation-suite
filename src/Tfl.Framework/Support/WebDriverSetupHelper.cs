@@ -40,7 +40,9 @@ public class WebDriverSetupHelper
         var chromeOptions = new ChromeOptions();
         chromeOptions.AddArgument("no-sandbox");
         chromeOptions.AddArgument("ignore-certificate-errors");
+        chromeOptions.AddArgument("-incognito");
         if (AllowAllCookies()) chromeOptions.AddUserProfilePreference("profile.cookie_controls_mode", 0);
+
         chromeOptions.UnhandledPromptBehavior = UnhandledPromptBehavior.Accept;
         chromeOptions.PageLoadStrategy = PageLoadStrategy.None;
         return chromeOptions;

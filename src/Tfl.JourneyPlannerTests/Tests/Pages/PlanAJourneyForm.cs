@@ -3,9 +3,9 @@ namespace Tfl.JourneyPlannerTests.Tests.Pages;
 
 public abstract class PlanAJourneyForm : ProjectBasePage
 {
-    protected static By JourneyFrom => By.CssSelector("#InputFrom");
+    protected static By InputFrom => By.CssSelector("#InputFrom");
 
-    protected static By JourneyTo => By.CssSelector("#InputTo");
+    protected static By InputTo => By.CssSelector("#InputTo");
 
     protected static By PlanJourneyButton => By.CssSelector("#plan-journey-button");
 

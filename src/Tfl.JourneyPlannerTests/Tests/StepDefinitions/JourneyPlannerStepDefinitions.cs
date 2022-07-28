@@ -21,19 +21,32 @@ public sealed class JourneyPlannerStepDefinitions
     }
 
     [Given(@"the user enters a valid locations")]
-    public void GivenTheUserEntersAValidLocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.ValidJourney);
+    public void GivenTheUserEntersAValidLocations() => GoToPlanAJourneyPage(_dataHelpers.ValidJourneys[0]);
 
     [Given(@"the user enters an invalid locations")]
-    public void GivenTheUserEntersAnValidLocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.InValidJourney);
+    public void GivenTheUserEntersAnValidLocations() => GoToPlanAJourneyPage(_dataHelpers.InValidJourney);
 
     [Given(@"the user enters a multiple locations")]
-    public void GivenTheUserEntersAMultipleLocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.MultipleLocation);
+    public void GivenTheUserEntersAMultipleLocations() => GoToPlanAJourneyPage(_dataHelpers.MultipleLocation);
 
     [Given(@"the user does not have a location")]
-    public void GivenTheUserDoesNotHaveALocations() => _planAJourneyPage = GoToPlanAJourneyPage(_dataHelpers.EmptyLocation);
+    public void GivenTheUserDoesNotHaveALocations() => GoToPlanAJourneyPage(_dataHelpers.EmptyLocation);
 
-    [When(@"the user plan a journey from the suggestions")]
-    public void WhenTheUserPlanAJourneyFromTheSuggestions() => _journeyResultsPage = _planAJourneyPage.UserPlansAJourneyFromSuggestions(_journeyDetails.from, _journeyDetails.to);
+    [When(@"the user plans for multiple journeys")]
+    public void WhenTheUserPlansForMultipleJourneys()
+    {
+        AcceptCookiesAndGoToPlanAJourneyPage();
+
+        foreach (var (from, to) in _dataHelpers.ValidJourneys)
+        {
+            _journeyResultsPage = _planAJourneyPage.UserPlansAJourneyFromSuggestions(from, to);
+
+            VerifyValidJourneyResults();
+
+            _planAJourneyPage = _journeyResultsPage.GoToPlanAJourneyPage();
+        }
+    }
+
 
     [When(@"the user plan a journey with no locations")]
     public void WhenTheUserPlanAJourneyWithNoLocations() => _planAJourneyPage = _planAJourneyPage.UserPlansAJourneyWithNoLocations();
@@ -71,15 +84,8 @@ public sealed class JourneyPlannerStepDefinitions
     [Then(@"the user can edit the journey")]
     public void ThenTheUserCanEditTheJourney() => _journeyResultsPage = _journeyResultsPage.EditJourney();
 
-    [Then(@"the recent journey can be found in the recent tab")]
-    public void ThenTheRecentJourneyCanBeFoundInTheRecentTab()
-    {
-        VerifyValidJourneyResults();
-
-        _planAJourneyPage = _journeyResultsPage.GoToPlanAJourneyPage();
-
-        Assert.AreEqual(true, _planAJourneyPage.IsRecentJourneyItemDisplayed(), "Recent journey is not found");
-    }
+    [Then(@"the recent journeys can be found in the recent tab")]
+    public void ThenTheRecentJourneyCanBeFoundInTheRecentTab() => Assert.AreEqual(true, _planAJourneyPage.IsRecentJourneyItemDisplayed(), "Recent journey is not found");
 
     private void VerifyValidJourneyResults() => StringAssert.Contains("Fastest by public transport", _journeyResultsPage.GetJourneyResults());
 
@@ -87,6 +93,8 @@ public sealed class JourneyPlannerStepDefinitions
     {
         _journeyDetails = journeyDetails;
 
-        return new LandingPage(_context).AcceptCookiesAndGoToPlanAJourneyPage();
+        return AcceptCookiesAndGoToPlanAJourneyPage();
     }
+
+    private PlanAJourneyPage AcceptCookiesAndGoToPlanAJourneyPage() => _planAJourneyPage = new LandingPage(_context).AcceptCookiesAndGoToPlanAJourneyPage();
 }

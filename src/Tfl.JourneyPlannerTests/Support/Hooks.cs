@@ -1,6 +1,4 @@
-﻿using Tfl.Framework.Support;
-
-namespace Tfl.JourneyPlannerTests.Support;
+﻿namespace Tfl.JourneyPlannerTests.Support;
 
 [Binding]
 public class Hooks

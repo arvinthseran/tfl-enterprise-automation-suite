@@ -3,6 +3,5 @@
 @journeyplanner
 @allowallcookies
 Scenario: Tfl_07_Verify recent journey
-	Given the user enters a valid locations
-	When the user plan a journey from the suggestions
-	Then the recent journey can be found in the recent tab
+	When the user plans for multiple journeys
+	Then the recent journeys can be found in the recent tab

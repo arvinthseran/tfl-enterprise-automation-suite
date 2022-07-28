@@ -1,7 +1,4 @@
-﻿
-using OpenQA.Selenium.Interactions;
-
-namespace Tfl.JourneyPlannerTests.Tests.Pages;
+﻿namespace Tfl.JourneyPlannerTests.Tests.Pages;
 
 public class PlanAJourneyPage : PlanAJourneyForm
 {

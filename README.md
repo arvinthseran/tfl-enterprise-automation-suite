@@ -36,5 +36,5 @@ Every release pipeline would be picking up the build artifact from `arvinthseran
 This framework supports Feature Level parallelization (tests under different feature file will run in parallel) not Scenario Level parallelization (tests under same feature file will not execute in parallel).
 
 ## Latest test execution results
-![image](https://user-images.githubusercontent.com/11176423/181393084-13b88905-3a29-4ce1-a60d-7366e08c2153.png)
+![image](https://user-images.githubusercontent.com/11176423/181396389-656cccfc-6735-4784-8a63-232092f3bcaa.png)
 

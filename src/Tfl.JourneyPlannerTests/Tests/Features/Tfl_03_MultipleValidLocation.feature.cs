@@ -74,16 +74,14 @@ namespace Tfl.JourneyPlannerTests.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Tfl_03_Verify that more than one matching location can be found using the widget." +
-            "")]
+        [NUnit.Framework.DescriptionAttribute("Tfl_03_Verify that more than one matching location can be found using the widget")]
         [NUnit.Framework.CategoryAttribute("journeyplanner")]
-        public void Tfl_03_VerifyThatMoreThanOneMatchingLocationCanBeFoundUsingTheWidget_()
+        public void Tfl_03_VerifyThatMoreThanOneMatchingLocationCanBeFoundUsingTheWidget()
         {
             string[] tagsOfScenario = new string[] {
                     "journeyplanner"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_03_Verify that more than one matching location can be found using the widget." +
-                    "", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Tfl_03_Verify that more than one matching location can be found using the widget", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

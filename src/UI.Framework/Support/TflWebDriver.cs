@@ -1,13 +1,13 @@
 ﻿namespace UI.Framework.Support;
 
-public class TflWebDriver
+public class EnterpriseWebDriver
 {
     private readonly IWebDriver _webDriver;
     private readonly FrameworkConfig _frameworkConfig;
     private readonly WebDriverSetupHelper _webDriverSetupHelper;
 
 
-    public TflWebDriver(FrameworkConfig frameworkConfig)
+    public EnterpriseWebDriver(FrameworkConfig frameworkConfig)
     {
         _frameworkConfig = frameworkConfig;
         _webDriverSetupHelper = new WebDriverSetupHelper(_frameworkConfig);

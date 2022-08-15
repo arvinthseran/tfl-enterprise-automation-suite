@@ -17,8 +17,8 @@ public class Hooks
     {
         var projectConfig = _context.Get<ProjectConfig>();
 
-        var tflWebDriver = _context.Get<TflWebDriver>();
+        var webDriver = _context.Get<EnterpriseWebDriver>();
 
-        tflWebDriver.GoToUrl(projectConfig.BaseUrl);
+        webDriver.GoToUrl(projectConfig.BaseUrl);
     }
 }

@@ -10,5 +10,5 @@ public class DisposeWebDriverTeardown
     public DisposeWebDriverTeardown(ScenarioContext context) => _context = context;
 
     [AfterScenario(Order = 19)]
-    public void DisposeWebDriver() => _context.Get<TflWebDriver>().Dispose();
+    public void DisposeWebDriver() => _context.Get<EnterpriseWebDriver>().Dispose();
 }

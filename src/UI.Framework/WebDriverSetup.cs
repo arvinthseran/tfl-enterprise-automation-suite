@@ -8,5 +8,5 @@ public class WebDriverSetup
     public WebDriverSetup(ScenarioContext context) => _context = context;
 
     [BeforeScenario(Order = 4)]
-    public void SetUpTflWebDriver() => _context.Set(new TflWebDriver(_context.Get<FrameworkConfig>()));
+    public void SetUpWebDriver() => _context.Set(new EnterpriseWebDriver(_context.Get<FrameworkConfig>()));
 }

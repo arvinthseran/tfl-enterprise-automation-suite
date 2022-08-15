@@ -6,7 +6,7 @@ public abstract class BasePage
 
     protected abstract string PageTitle { get; }
 
-    protected readonly TflWebDriver driver;
+    protected readonly EnterpriseWebDriver driver;
 
     protected readonly ScenarioContext context;
 
@@ -14,7 +14,7 @@ public abstract class BasePage
     {
         this.context = context;
 
-        driver = context.Get<TflWebDriver>();
+        driver = context.Get<EnterpriseWebDriver>();
 
         if (verifyPage) VerifyPage();
     }

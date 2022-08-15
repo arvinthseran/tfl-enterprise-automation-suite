@@ -1,7 +1,4 @@
-﻿using ConfigurationBuilder;
-using UI.Framework.Support;
-
-namespace UI.Framework;
+﻿namespace UI.Framework;
 
 [Binding]
 public class FrameworkConfigurationSetup

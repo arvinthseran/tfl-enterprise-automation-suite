@@ -1,6 +1,4 @@
-﻿using UI.Framework.Support;
-
-namespace Tfl.UITests.Support;
+﻿namespace Tfl.UITests.Support;
 
 [Binding]
 public class Hooks

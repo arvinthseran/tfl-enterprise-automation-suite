@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>UI.Framework</RootNamespace>
+		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+		<IsPackable>false</IsPackable>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Polly" Version="7.2.3" />
+	  <PackageReference Include="Selenium.Support" Version="4.3.0" />
+	  <PackageReference Include="Selenium.WebDriver" Version="4.3.0" />
+		<PackageReference Include="NUnit" Version="3.13.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ConfigurationBuilder\ConfigurationBuilder.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="appsettings.Framework.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
+</Project>

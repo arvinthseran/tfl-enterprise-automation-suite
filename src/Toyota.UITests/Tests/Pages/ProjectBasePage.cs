@@ -9,7 +9,7 @@ public abstract class ProjectBasePage : BasePage
 
     protected ProjectConfig projectConfig;
 
-    public ProjectBasePage(ScenarioContext context, bool verifyPage = true) : base(context)
+    public ProjectBasePage(ScenarioContext context, bool verifyPage = true) : base(context, verifyPage)
     {
         projectConfig = context.Get<ProjectConfig>();
     }

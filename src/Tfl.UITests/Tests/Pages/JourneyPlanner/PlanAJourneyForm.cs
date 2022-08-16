@@ -17,11 +17,11 @@ public abstract class PlanAJourneyForm : ProjectBasePage
     {
     }
 
-    protected void SelectTomorrow() => driver.SelectByText(DateSelector, "Tomorrow");
+    protected void SelectTomorrow() => enterpriseWebdriver.SelectByText(DateSelector, "Tomorrow");
 
     protected JourneyResultsPage GoToJourneyResultsPage()
     {
-        driver.Click(PlanJourneyButton);
+        enterpriseWebdriver.Click(PlanJourneyButton);
         return new(context);
     }
 }

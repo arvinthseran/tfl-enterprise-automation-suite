@@ -15,7 +15,7 @@ public class AygoXPureHomePage : ProjectBasePage
 
     public BookTestDrivePage BookTestDrive()
     {
-        driver.Click(BookTestDriveSelector);
+        enterpriseWebdriver.Click(BookTestDriveSelector);
 
         return new BookTestDrivePage(context, topMenuPage);
     }

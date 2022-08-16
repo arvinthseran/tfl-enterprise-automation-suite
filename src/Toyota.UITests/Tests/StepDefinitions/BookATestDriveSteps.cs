@@ -30,6 +30,6 @@ namespace Toyota.UITests.Tests.StepDefinitions
         public void ThenTheUserIsTakenToBookATestDrivePage() => bookTestDrivePage = aygoXHomePage.GotoAygoXPureHomePage().BookTestDrive();
 
         [Then(@"(.*) should be pre selected")]
-        public void ThenAllNewAygoXShouldBePreSelected(string expected) => StringAssert.AreEqualIgnoringCase(expected, bookTestDrivePage.GetSelectedCar());
+        public void ThenAllNewAygoXShouldBePreSelected(string expected) => bookTestDrivePage.VerifySelectedCar(expected);
     }
 }

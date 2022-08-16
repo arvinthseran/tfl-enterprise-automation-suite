@@ -14,11 +14,11 @@ public class EnterpriseWebDriver
         _webDriver = _webDriverSetupHelper.SetUpWebDriver();
     }
 
-    public IWebDriver GetWebDriver() => _webDriver;
-
     public void SelectByText(By by, string text) => new SelectElement(FindEnabledElement(by)).SelectByText(text);
 
     public string GetText(By by) => FindEnabledElement(by).Text;
+
+    public string GetEnabledAndDisplayedElementText(By by) => FindEnabledElement(by).Text;
 
     public void Click(By by) => FindEnabledElement(by).Click();
 
@@ -75,6 +75,8 @@ public class EnterpriseWebDriver
     public IWebElement FindEnabledAndDisplayedElement(By by) => FindElement(by, (x) => x.Enabled && x.Displayed);
 
     public IWebElement FindEnabledElement(By by) => FindElement(by, (x) => x.Enabled);
+
+    internal IWebDriver GetWebDriver() => _webDriver;
 
     private IWebElement FindElement(By by, Func<IWebElement, bool> func)
     {

@@ -14,5 +14,5 @@ public class AcceptCookiesPage : ProjectBasePage
 
     private static By AcceptCookiesSelector => By.CssSelector("#onetrust-accept-btn-handler");
 
-    public void AcceptCookies() => driver.FindElement(AcceptCookiesSelector).Click();
+    public void AcceptCookies() => enterpriseWebdriver.FindElement(AcceptCookiesSelector).Click();
 }

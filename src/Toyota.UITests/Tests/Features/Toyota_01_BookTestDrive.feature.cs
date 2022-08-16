@@ -74,14 +74,14 @@ namespace Toyota.UITests.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("User books Test drive")]
+        [NUnit.Framework.DescriptionAttribute("Toyota_01 Book a Test drive")]
         [NUnit.Framework.CategoryAttribute("booktestdrive")]
-        public void UserBooksTestDrive()
+        public void Toyota_01BookATestDrive()
         {
             string[] tagsOfScenario = new string[] {
                     "booktestdrive"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User books Test drive", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Toyota_01 Book a Test drive", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 4
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

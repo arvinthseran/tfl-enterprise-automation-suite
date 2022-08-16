@@ -20,11 +20,11 @@ public class HomePage : ProjectBasePage
 
     public AygoXHomePage GoToAygoXHomePage()
     {
-        driver.FindElement(topMenuPage.NewVehicleMenu()).Click();
+        enterpriseWebdriver.FindElement(topMenuPage.NewVehicleMenu()).Click();
 
-        driver.FindElement(NewVehicleMenu).Click();
+        enterpriseWebdriver.FindElement(NewVehicleMenu).Click();
 
-        driver.GoToUrl($"{projectConfig.BaseUrl}/new-cars/aygo-x");
+        enterpriseWebdriver.GoToUrl($"{projectConfig.BaseUrl}/new-cars/aygo-x");
 
         return new AygoXHomePage(context, topMenuPage);
     }

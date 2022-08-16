@@ -18,9 +18,9 @@ public class AygoXHomePage : ProjectBasePage
 
     public AygoXPureHomePage GotoAygoXPureHomePage()
     {
-        driver.Click(SelectManual);
+        enterpriseWebdriver.Click(SelectManual);
 
-        driver.Click(SelectGrade);
+        enterpriseWebdriver.Click(SelectGrade);
 
         return new AygoXPureHomePage(context, topMenuPage);
     }

@@ -10,7 +10,7 @@ public abstract class ProjectBasePage : BasePage
 
     public PlanAJourneyPage GoToPlanAJourneyPage()
     {
-        driver.Click(TflHomeLink);
+        enterpriseWebdriver.Click(TflHomeLink);
         return new(context);
     }
 }

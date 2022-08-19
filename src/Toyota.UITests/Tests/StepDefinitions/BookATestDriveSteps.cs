@@ -11,7 +11,9 @@ namespace Toyota.UITests.Tests.StepDefinitions
 
         private AygoXHomePage aygoXHomePage;
 
-        private BookTestDrivePage bookTestDrivePage; 
+        private BookTestDrivePage bookTestDrivePage;
+
+        private static string _car;
 
         public BookATestDriveSteps(ScenarioContext context) => _context = context;
 
@@ -24,12 +26,12 @@ namespace Toyota.UITests.Tests.StepDefinitions
         }
 
         [When(@"the user selects a car from new vehicle")]
-        public void WhenTheUserSelectsACarFromNewVehicle() => aygoXHomePage = homePage.GoToAygoXHomePage();
+        public void WhenTheUserSelectsACarFromNewVehicle() { aygoXHomePage = homePage.GoToAygoXHomePage(); _car = "All New Aygo X"; }
 
         [Then(@"the user is taken to Book a test drive page")]
         public void ThenTheUserIsTakenToBookATestDrivePage() => bookTestDrivePage = aygoXHomePage.GotoAygoXPureHomePage().BookTestDrive();
 
-        [Then(@"(.*) should be pre selected")]
-        public void ThenAllNewAygoXShouldBePreSelected(string expected) => bookTestDrivePage.VerifySelectedCar(expected);
+        [Then(@"the car should be pre selected")]
+        public void ThenAllNewAygoXShouldBePreSelected() => bookTestDrivePage.VerifySelectedCar(_car);
     }
 }

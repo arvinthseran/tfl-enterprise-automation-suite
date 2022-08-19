@@ -6,7 +6,9 @@ public abstract class BasePage
 
     protected abstract string PageTitle { get; }
 
-    protected readonly EnterpriseWebDriver driver;
+    protected readonly EnterpriseWebDriver enterpriseWebdriver;
+
+    protected readonly IWebDriver webDriver;
 
     protected readonly ScenarioContext context;
 
@@ -14,24 +16,28 @@ public abstract class BasePage
     {
         this.context = context;
 
-        driver = context.Get<EnterpriseWebDriver>();
+        enterpriseWebdriver = context.Get<EnterpriseWebDriver>();
+
+        webDriver = enterpriseWebdriver.GetWebDriver();
 
         if (verifyPage) VerifyPage();
     }
 
-    protected void VerifyPage()
+    protected void VerifyPage(By by, string expected)
     {
-        driver.TakeScreenShot(PageTitle);
+        enterpriseWebdriver.TakeScreenShot(expected);
 
         RetryOnException(() =>
         {
-            var actual = driver.FindElement(PageHeader).Text;
+            var actual = enterpriseWebdriver.FindElement(by).Text;
 
-            StringAssert.Contains(PageTitle, actual, $"Page verification failed:" +
-                $"{Environment.NewLine}Expected: {PageTitle}" +
+            StringAssert.Contains(expected, actual, $"Page verification failed:" +
+                $"{Environment.NewLine}Expected: {expected}" +
                 $"{Environment.NewLine}Actual: {actual}");
         });
     }
+
+    protected void VerifyPage() => VerifyPage(PageHeader, PageTitle);
 
     internal static void RetryOnException(Action action)
     {

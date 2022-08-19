@@ -1,7 +1,4 @@
-﻿using Tfl.UITests.Tests.Pages.JourneyPlanner;
-using UI.Framework.Support;
-
-namespace Tfl.UITests.Tests.Pages;
+﻿namespace Tfl.UITests.Tests.Pages;
 
 public abstract class ProjectBasePage : BasePage
 {
@@ -13,7 +10,7 @@ public abstract class ProjectBasePage : BasePage
 
     public PlanAJourneyPage GoToPlanAJourneyPage()
     {
-        driver.Click(TflHomeLink);
+        enterpriseWebdriver.Click(TflHomeLink);
         return new(context);
     }
 }

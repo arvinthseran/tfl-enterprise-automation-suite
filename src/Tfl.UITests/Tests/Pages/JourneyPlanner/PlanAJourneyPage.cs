@@ -40,40 +40,40 @@ public class PlanAJourneyPage : PlanAJourneyForm
     public JourneyResultsPage UserPlansAJourneyBasedOnArrival(string from, string to)
     {
         EnterJourney(from, to);
-        driver.Click(ChangeDepartureTime);
-        driver.Click(Arriving);
+        enterpriseWebdriver.Click(ChangeDepartureTime);
+        enterpriseWebdriver.Click(Arriving);
         SelectTomorrow();
         return GoToJourneyResultsPage();
     }
 
     public PlanAJourneyPage UserPlansAJourneyWithNoLocations()
     {
-        driver.Click(PlanJourneyButton);
+        enterpriseWebdriver.Click(PlanJourneyButton);
         return new(context);
     }
 
-    public string GetInputFromError() => driver.GetText(InputFromError);
+    public string GetInputFromError() => enterpriseWebdriver.GetText(InputFromError);
 
-    public string GetInputToError() => driver.GetText(InputToError);
+    public string GetInputToError() => enterpriseWebdriver.GetText(InputToError);
 
     private void EnterJourney(string from, string to)
     {
-        driver.EnterText(InputFrom, from);
-        driver.EnterText(InputTo, to);
+        enterpriseWebdriver.EnterText(InputFrom, from);
+        enterpriseWebdriver.EnterText(InputTo, to);
     }
 
     public bool IsRecentJourneyItemDisplayed()
     {
-        driver.Click(RecentTab);
-        return driver.TryToFindNotVisibleElements(RecentJourneyItems).Count >= 1;
+        enterpriseWebdriver.Click(RecentTab);
+        return enterpriseWebdriver.TryToFindNotVisibleElements(RecentJourneyItems).Count >= 1;
     }
 
     private void EnterJourneyInput(By textbox, By dropdown, string text)
     {
-        driver.EnterText(textbox, text, false);
+        enterpriseWebdriver.EnterText(textbox, text, false);
 
-        var element = driver.FindEnabledAndDisplayedElement(dropdown);
+        var element = enterpriseWebdriver.FindEnabledAndDisplayedElement(dropdown);
 
-        new Actions(driver.GetWebDriver()).MoveToElement(element).Click(element).Perform();
+        new Actions(webDriver).MoveToElement(element).Click(element).Perform();
     }
 }

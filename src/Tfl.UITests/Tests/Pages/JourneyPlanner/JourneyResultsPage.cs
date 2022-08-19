@@ -19,17 +19,17 @@ public class JourneyResultsPage : PlanAJourneyForm
 
     protected override string PageTitle => "Journey results";
 
-    public string GetFieldValidationErrors() => driver.GetText(FieldValidationErros);
+    public string GetFieldValidationErrors() => enterpriseWebdriver.GetText(FieldValidationErros);
 
-    public string GetJourneyResults() => driver.GetText(JourneyResults);
+    public string GetJourneyResults() => enterpriseWebdriver.GetText(JourneyResults);
 
-    public string GetDisambiguationMessage() => driver.GetText(DisambiguationMessage);
+    public string GetDisambiguationMessage() => enterpriseWebdriver.GetText(DisambiguationMessage);
 
-    public bool IsDisambiguationMessageDisplayed() => driver.TryToFindNotVisibleElements(DisambiguationMessage).Count != 0;
+    public bool IsDisambiguationMessageDisplayed() => enterpriseWebdriver.TryToFindNotVisibleElements(DisambiguationMessage).Count != 0;
 
     public JourneyResultsPage EditJourney()
     {
-        driver.Click(EditJourneySelector);
+        enterpriseWebdriver.Click(EditJourneySelector);
         SelectTomorrow();
         return GoToJourneyResultsPage();
     }

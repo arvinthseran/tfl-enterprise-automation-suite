@@ -17,8 +17,8 @@ public class LandingPage : ProjectBasePage
 
     public PlanAJourneyPage AcceptCookiesAndGoToPlanAJourneyPage()
     {
-        driver.FindEnabledAndDisplayedElement(AcceptCookies).Click();
-        driver.FindEnabledAndDisplayedElement(SaveCookiesSettings).Click();
+        enterpriseWebdriver.FindEnabledAndDisplayedElement(AcceptCookies).Click();
+        enterpriseWebdriver.FindEnabledAndDisplayedElement(SaveCookiesSettings).Click();
         return new(context);
     }
 }

@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConfigurationBuilder", "Con
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Framework", "Framework", "{E9BC7E5B-B6D1-4226-BBCC-6DA8834AB61A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ul.Framework", "UI.Framework\Ul.Framework.csproj", "{1A975A76-7C2E-4374-AB08-B3C3448571E8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI.Framework", "UI.Framework\UI.Framework.csproj", "{1A975A76-7C2E-4374-AB08-B3C3448571E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toyota.UITests", "Toyota.UITests\Toyota.UITests.csproj", "{52093CA2-7650-4143-ABAC-07D18BA17FF2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{1A975A76-7C2E-4374-AB08-B3C3448571E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1A975A76-7C2E-4374-AB08-B3C3448571E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A975A76-7C2E-4374-AB08-B3C3448571E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52093CA2-7650-4143-ABAC-07D18BA17FF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52093CA2-7650-4143-ABAC-07D18BA17FF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52093CA2-7650-4143-ABAC-07D18BA17FF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52093CA2-7650-4143-ABAC-07D18BA17FF2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

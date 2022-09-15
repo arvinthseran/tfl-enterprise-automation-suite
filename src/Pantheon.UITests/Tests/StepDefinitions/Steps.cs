@@ -8,6 +8,6 @@ public class Steps
     private readonly ScenarioContext _context;
     public Steps(ScenarioContext context) => _context = context;
 
-    [Then(@"the sub-links under (About) menu should be working")]
+    [Then(@"the sub-links under (About|Team|Investment) menu should be working")]
     public void ThenTheSub_LinksUnderAboutMenuShouldBeWorking(string menu) => new LandingPage(_context).VerifySubMenu(menu);
 }

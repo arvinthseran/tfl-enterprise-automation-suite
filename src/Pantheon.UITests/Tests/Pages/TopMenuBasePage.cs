@@ -42,9 +42,9 @@ public abstract class TopMenuBasePage : BasePage
 
             menuElement().FindElements(SubMenus).Single(x => x.Text == item).Click();
 
-            string expectedPageTitle = expectedSubMenuPageTitle.ContainsKey(item) ? expectedSubMenuPageTitle[item] : item;
+            string expectedPageTitle = (expectedSubMenuPageTitle is not null && expectedSubMenuPageTitle.ContainsKey(item)) ? expectedSubMenuPageTitle[item] : item;
 
-            _ = new DynamicPage(context, By.CssSelector(".entry-title"), expectedPageTitle);
+            _ = new DynamicPage(context, By.CssSelector(".entry-header, .entry-title"), expectedPageTitle);
         }
     }
 

@@ -23,6 +23,12 @@
 	  <Compile Update="NUnitConfigurator.cs">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </Compile>
+	  <Compile Update="Tests\Features\Pantheon_03_CheckInvestmentMenu.feature.cs">
+	    <DependentUpon>Pantheon_03_CheckInvestmentMenu.feature</DependentUpon>
+	  </Compile>
+	  <Compile Update="Tests\Features\Pantheon_02_CheckTeamMenu.feature.cs">
+	    <DependentUpon>Pantheon_02_CheckTeamMenu.feature</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>

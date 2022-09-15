@@ -1,20 +1,13 @@
-﻿using TechTalk.SpecFlow;
+﻿using Pantheon.UITests.Tests.Pages;
 
-namespace Pantheon.UITests.Tests.StepDefinitions
+namespace Pantheon.UITests.Tests.StepDefinitions;
+
+[Binding]
+public class Steps
 {
-    [Binding]
-    public class Steps
-    {
-        public Steps(ScenarioContext context)
-        {
+    private readonly ScenarioContext _context;
+    public Steps(ScenarioContext context) => _context = context;
 
-        }
-
-        [Then(@"the sub-links under About menu should be working")]
-        public void ThenTheSub_LinksUnderAboutMenuShouldBeWorking()
-        {
-            throw new PendingStepException();
-        }
-
-    }
+    [Then(@"the sub-links under (About) menu should be working")]
+    public void ThenTheSub_LinksUnderAboutMenuShouldBeWorking(string menu) => new LandingPage(_context).VerifySubMenu(menu);
 }

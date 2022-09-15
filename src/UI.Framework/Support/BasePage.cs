@@ -1,4 +1,6 @@
-﻿namespace UI.Framework.Support;
+﻿using NUnit.Framework;
+
+namespace UI.Framework.Support;
 
 public abstract class BasePage
 {
@@ -31,9 +33,9 @@ public abstract class BasePage
         {
             var actual = enterpriseWebdriver.FindElement(by).Text;
 
-            StringAssert.Contains(expected, actual, $"Page verification failed:" +
-                $"{Environment.NewLine}Expected: {expected}" +
-                $"{Environment.NewLine}Actual: {actual}");
+            string message = $"Page verification failed: {Environment.NewLine}Expected: {expected} {Environment.NewLine}Actual: {actual}";
+
+            Assert.That(actual.Contains(expected, StringComparison.OrdinalIgnoreCase), message);
         });
     }
 

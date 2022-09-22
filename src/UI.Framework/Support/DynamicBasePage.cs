@@ -1,13 +1,11 @@
-﻿using OpenQA.Selenium;
+﻿namespace UI.Framework.Support;
 
-namespace Pantheon.UITests.Tests.Pages;
-
-public class DynamicPage : TopMenuBasePage
+public class DynamicBasePage : BasePage
 {
     private readonly By _pageheader;
     private readonly string _pageTitle;
 
-    public DynamicPage(ScenarioContext context, By pageheader, string pagetitle) : base(context, false)
+    public DynamicBasePage(ScenarioContext context, By pageheader, string pagetitle) : base(context, false)
     {
         _pageheader = pageheader;
         _pageTitle = pagetitle;

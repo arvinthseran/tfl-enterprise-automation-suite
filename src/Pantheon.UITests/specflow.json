@@ -1,0 +1,15 @@
+{
+  "bindingCulture": {
+    "feature": "en-GB"
+  },
+  "language": {
+    "feature": "en-GB"
+  },
+  "stepAssemblies": [
+    { "assembly": "ConfigurationBuilder" },
+    { "assembly": "UI.Framework" }
+  ],
+  "generator": {
+    "allowRowTests": false
+  }
+}

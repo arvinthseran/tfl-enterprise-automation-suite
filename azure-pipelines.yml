@@ -73,4 +73,4 @@ steps:
 - task: SpecFlowPlus@0
   inputs:
     generatorSource: 'FeatureFolder'
-    projectFilePath: '$(build.artifactstagingdirectory)/publish'
+    projectFilePath: '$(build.artifactstagingdirectory)/tests'

@@ -75,7 +75,6 @@ steps:
     generatorSource: 'FeatureFolder'
     projectFilePath: 'src/'
     projectName: 'Enterprise.Freelancing'
-    testExecutionJson: '$(System.DefaultWorkingDirectory)/tfl-enterprise-automation-test-suite/drop/tests/**/TestExecution.json'
     bindingAssemblies: |
         Pantheon.UITests/**/Pantheon.UITests.dll
         Tfl.UITests/**/Tfl.UITests.dll

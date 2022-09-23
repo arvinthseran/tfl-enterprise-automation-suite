@@ -11,5 +11,9 @@
   ],
   "generator": {
     "allowRowTests": false
+  },
+  "livingDocGenerator": {
+    "enabled": true,
+    "filePath": "TestExecution_{ProcessId}_{ThreadId}_{Now}.json"
   }
 }

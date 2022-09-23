@@ -75,7 +75,3 @@ steps:
     generatorSource: 'FeatureFolder'
     projectFilePath: 'src/'
     projectName: 'Enterprise.Freelancing'
-    bindingAssemblies: |
-        Pantheon.UITests/**/Pantheon.UITests.dll
-        Tfl.UITests/**/Tfl.UITests.dll
-        Toyota.UITests/**/Toyota.UITests.dll

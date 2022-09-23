@@ -69,3 +69,9 @@ steps:
   displayName: 'Publish Artifact'
   inputs:
     pathtoPublish: '$(build.artifactstagingdirectory)/publish'
+
+- task: SpecFlowPlus@0
+  inputs:
+    generatorSource: 'FeatureFolder'
+    projectFilePath: 'src/'
+    projectName: 'Enterprise.Freelancing'

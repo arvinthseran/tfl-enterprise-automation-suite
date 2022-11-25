@@ -37,8 +37,8 @@ public class RecyclePage : BasePage
 
         return new RecyclePage(context);
     }
-
-    public void VerifyYourCollections() => enterpriseWebdriver.FindEnabledAndDisplayedElement(YourCollections);
+    
+    public void VerifyYourCollections() => VerifyPage(YourCollections, "Your collections");
 
     public static T GetRandomElementFromListOfElements<T>(List<T> elements)
     {

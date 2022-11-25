@@ -44,7 +44,7 @@ public abstract class TopMenuBasePage : BasePage
 
             string expectedPageTitle = (expectedSubMenuPageTitle is not null && expectedSubMenuPageTitle.ContainsKey(item)) ? expectedSubMenuPageTitle[item] : item;
 
-            _ = new DynamicPage(context, By.CssSelector(".entry-header, .entry-title"), expectedPageTitle);
+            _ = new DynamicBasePage(context, By.CssSelector(".entry-header, .entry-title"), expectedPageTitle);
         }
     }
 

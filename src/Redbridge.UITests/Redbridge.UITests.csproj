@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		<RootNamespace>Pantheon.UITests</RootNamespace>
+		<RootNamespace>Redbridge.UITests</RootNamespace>
 		<ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
 		<IsPackable>false</IsPackable>
 	</PropertyGroup>
@@ -33,5 +33,5 @@
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
 	</ItemGroup>
-
+	
 </Project>

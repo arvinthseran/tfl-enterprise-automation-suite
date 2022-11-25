@@ -25,18 +25,31 @@ public abstract class BasePage
         if (verifyPage) VerifyPage();
     }
 
-    protected void VerifyPage(By by, string expected)
+    protected void VerifyPage(By by, string expected) => VerifyPage(by, expected, (x) => x.Text);
+    
+    protected void VerifyPage(By by, string expected, Func<IWebElement, string> func)
     {
-        enterpriseWebdriver.TakeScreenShot(expected);
-
-        RetryOnException(() =>
+        try
         {
-            var actual = enterpriseWebdriver.FindElement(by).Text;
+            RetryOnException(() =>
+            {
+                var actual = func(enterpriseWebdriver.FindElement(by));
 
-            string message = $"Page verification failed: {Environment.NewLine}Expected: {expected} {Environment.NewLine}Actual: {actual}";
+                VerifyPage(actual, expected);
+            });
 
-            Assert.That(actual.Contains(expected, StringComparison.OrdinalIgnoreCase), message);
-        });
+        }
+        finally
+        {
+            enterpriseWebdriver.TakeScreenShot(expected);
+        }
+    }
+
+    private static void VerifyPage(string actual, string expected)
+    {
+        string message = $"Page verification failed: {Environment.NewLine}Expected: {expected} {Environment.NewLine}Actual: {actual}";
+
+        Assert.That(actual.Contains(expected, StringComparison.OrdinalIgnoreCase), message);
     }
 
     protected void VerifyPage() => VerifyPage(PageHeader, PageTitle);

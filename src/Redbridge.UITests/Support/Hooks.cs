@@ -1,6 +1,4 @@
-﻿using UI.Framework.Support;
-
-namespace LeedsCityCouncil.UITests.Support;
+﻿namespace Redbridge.UITests.Support;
 
 [Binding]
 public class Hooks

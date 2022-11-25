@@ -15,7 +15,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Toyota.UITests", "Toyota.UI
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pantheon.UITests", "Pantheon.UITests\Pantheon.UITests.csproj", "{3272F49A-04EC-4F4F-9978-3441AA9619B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeedsCityCouncil.UITests", "LeedsCityCouncil.UITests\LeedsCityCouncil.UITests.csproj", "{0CF806F0-7EBE-4E89-B25F-0163E2F3E861}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Redbridge.UITests", "Redbridge.UITests\Redbridge.UITests.csproj", "{0CF806F0-7EBE-4E89-B25F-0163E2F3E861}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,6 +1,4 @@
-﻿using ConfigurationBuilder;
-
-namespace LeedsCityCouncil.UITests.Support;
+﻿namespace Redbridge.UITests.Support;
 
 
 [Binding]

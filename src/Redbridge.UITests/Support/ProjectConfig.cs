@@ -1,4 +1,4 @@
-﻿namespace LeedsCityCouncil.UITests.Support;
+﻿namespace Redbridge.UITests.Support;
 
 public class ProjectConfig
 {

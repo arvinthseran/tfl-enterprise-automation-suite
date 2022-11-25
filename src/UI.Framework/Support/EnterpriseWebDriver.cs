@@ -36,13 +36,16 @@ public class EnterpriseWebDriver
     {
         var imageName = $"{DateTime.Now:HH-mm-ss}_{pageTitle}.png".RemoveSpace();
 
-        string screenshotPath = _frameworkConfig.TestAttachmentsDirectoryPath;
+        string screenshotPath = Combine(_frameworkConfig.TestAttachmentsDirectoryPath, imageName);
 
         try
         {
             ITakesScreenshot screenshotHandler = _webDriver as ITakesScreenshot;
+
             Screenshot screenshot = screenshotHandler.GetScreenshot();
+            
             screenshot.SaveAsFile(screenshotPath, ScreenshotImageFormat.Png);
+            
             TestContext.AddTestAttachment(screenshotPath, imageName);
         }
         catch (Exception exception)
@@ -95,4 +98,11 @@ public class EnterpriseWebDriver
     }
 
     private WebDriverWait WebDriverWait() => new(_webDriver, TimeSpan.FromSeconds(_frameworkConfig.ExplicitWait));
+
+    private static string Combine(string screenshotsDirectory, string imageName)
+    {
+        var screenshotPath = Path.Combine(screenshotsDirectory, imageName);
+
+        return Path.GetFullPath(screenshotPath);
+    }
 }

@@ -74,16 +74,16 @@ namespace Redbridge.UITests.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Redbridge_01_CheckHomePage")]
+        [NUnit.Framework.DescriptionAttribute("Redbridge_01_CheckBinCollectionDays")]
         [NUnit.Framework.CategoryAttribute("regression")]
         [NUnit.Framework.CategoryAttribute("leedscitycouncil")]
-        public void Redbridge_01_CheckHomePage()
+        public void Redbridge_01_CheckBinCollectionDays()
         {
             string[] tagsOfScenario = new string[] {
                     "regression",
                     "leedscitycouncil"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Redbridge_01_CheckHomePage", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Redbridge_01_CheckBinCollectionDays", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 7
 this.ScenarioInitialize(scenarioInfo);
 #line hidden

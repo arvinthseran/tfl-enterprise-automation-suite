@@ -33,10 +33,27 @@ public abstract class BasePage
         {
             var actual = enterpriseWebdriver.FindElement(by).Text;
 
-            string message = $"Page verification failed: {Environment.NewLine}Expected: {expected} {Environment.NewLine}Actual: {actual}";
-
-            Assert.That(actual.Contains(expected, StringComparison.OrdinalIgnoreCase), message);
+            VerifyPage(actual, expected);
         });
+    }
+
+    protected void VerifyPage(By by, string expected, Func<IWebElement, string> func)
+    {
+        enterpriseWebdriver.TakeScreenShot(expected);
+
+        RetryOnException(() =>
+        {
+            var actual = func(enterpriseWebdriver.FindElement(by));
+
+            VerifyPage(actual, expected);
+        });
+    }
+
+    private static void VerifyPage(string actual, string expected)
+    {
+        string message = $"Page verification failed: {Environment.NewLine}Expected: {expected} {Environment.NewLine}Actual: {actual}";
+
+        Assert.That(actual.Contains(expected, StringComparison.OrdinalIgnoreCase), message);
     }
 
     protected void VerifyPage() => VerifyPage(PageHeader, PageTitle);

@@ -25,28 +25,24 @@ public abstract class BasePage
         if (verifyPage) VerifyPage();
     }
 
-    protected void VerifyPage(By by, string expected)
-    {
-        enterpriseWebdriver.TakeScreenShot(expected);
-
-        RetryOnException(() =>
-        {
-            var actual = enterpriseWebdriver.FindElement(by).Text;
-
-            VerifyPage(actual, expected);
-        });
-    }
-
+    protected void VerifyPage(By by, string expected) => VerifyPage(by, expected, (x) => x.Text);
+    
     protected void VerifyPage(By by, string expected, Func<IWebElement, string> func)
     {
-        enterpriseWebdriver.TakeScreenShot(expected);
-
-        RetryOnException(() =>
+        try
         {
-            var actual = func(enterpriseWebdriver.FindElement(by));
+            RetryOnException(() =>
+            {
+                var actual = func(enterpriseWebdriver.FindElement(by));
 
-            VerifyPage(actual, expected);
-        });
+                VerifyPage(actual, expected);
+            });
+
+        }
+        finally
+        {
+            enterpriseWebdriver.TakeScreenShot(expected);
+        }
     }
 
     private static void VerifyPage(string actual, string expected)

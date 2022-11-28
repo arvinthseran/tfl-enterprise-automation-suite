@@ -1,6 +1,6 @@
 ﻿namespace Redbridge.UITests.Tests.Pages;
 
-public class BinsPage : BasePage
+public class BinsPage : RedbridgeBasePage
 {
     public BinsPage(ScenarioContext context) : base(context) 
     {

@@ -7,6 +7,6 @@ public class ConfigurationSetup
 
     public ConfigurationSetup(ScenarioContext context) => _context = context;
 
-    [BeforeScenario(Order = 0)]
+    [BeforeScenario(Order = 1)]
     public void SetUpConfiguration() => _context.Set<IConfigSection>(new ConfigSection(Configurator.GetConfig()));
 }

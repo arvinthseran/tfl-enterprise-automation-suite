@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using ConfigurationBuilder;
 
 namespace Redbridge.UITests.Tests.Pages;
 
-public class RecyclePage : BasePage
+
+public class RecyclePage : RedbridgeBasePage
 {
     public RecyclePage(ScenarioContext context): base(context)
     {
@@ -25,13 +24,17 @@ public class RecyclePage : BasePage
 
     public RecyclePage EnterAddress()
     {
-        enterpriseWebdriver.EnterText(SearchAddress, "IG1 3DE");
+        var postcode = testDataHelper.Postcode;
+
+        enterpriseWebdriver.EnterText(SearchAddress, postcode);
+
+        objectContext.Set("postcode", postcode);
 
         enterpriseWebdriver.Click(SearchAddressButton);
 
         enterpriseWebdriver.FindEnabledAndDisplayedElement(AddressListHolder);
 
-        var address = GetRandomElementFromListOfElements(webDriver.FindElements(AddressListHolder).ToList());
+        var address = testDataHelper.GetRandomElementFromListOfElements(webDriver.FindElements(AddressListHolder).ToList());
 
         address.Click();
 
@@ -39,11 +42,4 @@ public class RecyclePage : BasePage
     }
     
     public void VerifyYourCollections() => VerifyPage(YourCollections, "Your collections");
-
-    public static T GetRandomElementFromListOfElements<T>(List<T> elements)
-    {
-        var randomNumber = new Random().Next(0, elements.Count);
-
-        return elements[randomNumber];
-    }
 }

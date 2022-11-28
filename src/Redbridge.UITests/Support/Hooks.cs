@@ -1,4 +1,6 @@
-﻿namespace Redbridge.UITests.Support;
+﻿using Redbridge.UITests.Tests.Pages;
+
+namespace Redbridge.UITests.Support;
 
 [Binding]
 public class Hooks
@@ -15,5 +17,7 @@ public class Hooks
         var webDriver = _context.Get<EnterpriseWebDriver>();
 
         webDriver.GoToUrl(projectConfig.BaseUrl);
+
+        _context.Set(new TestDataHelper());
     }
 }

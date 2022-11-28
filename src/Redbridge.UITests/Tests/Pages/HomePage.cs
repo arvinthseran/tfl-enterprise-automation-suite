@@ -1,7 +1,7 @@
 ﻿namespace Redbridge.UITests.Tests.Pages;
 
 
-public class HomePage : BasePage
+public class HomePage : RedbridgeBasePage
 {
     public HomePage(ScenarioContext context) : base(context, false) => VerifyPage(PageHeader, PageTitle, (x) => x.GetAttribute("alt"));
 

@@ -1,6 +1,6 @@
 ﻿namespace Redbridge.UITests.Tests.Pages;
 
-public class AccessibilityPage : BasePage
+public class AccessibilityPage : RedbridgeBasePage
 {
     public AccessibilityPage(ScenarioContext context) : base(context)
     {

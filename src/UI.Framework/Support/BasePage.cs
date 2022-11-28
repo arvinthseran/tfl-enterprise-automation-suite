@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using ConfigurationBuilder;
+using NUnit.Framework;
 
 namespace UI.Framework.Support;
 
@@ -14,9 +15,13 @@ public abstract class BasePage
 
     protected readonly ScenarioContext context;
 
+    protected readonly ObjectContext objectContext;
+
     public BasePage(ScenarioContext context, bool verifyPage = true)
     {
         this.context = context;
+
+        objectContext = context.Get<ObjectContext>();
 
         enterpriseWebdriver = context.Get<EnterpriseWebDriver>();
 

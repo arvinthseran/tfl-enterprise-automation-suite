@@ -1,4 +1,6 @@
-﻿namespace Redbridge.UITests.Tests.Pages.Beta;
+﻿using Polly;
+
+namespace Redbridge.UITests.Tests.Pages.Beta;
 
 public class BetaHomePage : RedbridgeBasePage
 {
@@ -17,14 +19,26 @@ public class BetaHomePage : RedbridgeBasePage
 
     protected override string PageTitle => "Provide details about the property";
 
-    public BetaSummaryPage SearchAddress()
+    public BetaSummaryPage SearchValidAddress()
     {
-        searchAddressPage.SearchAddress();
+        searchAddressPage.SearchValidAddress(testDataHelper.ValidPostcode);
 
         enterpriseWebdriver.EnterText(Textarea, "Optional details about the property");
 
         enterpriseWebdriver.Click(ContinueButton);
 
         return new BetaSummaryPage(context);
+    }
+
+    public BetaHomePage SearchInValidAddress()
+    {
+        searchAddressPage.SearchInValidAddress(testDataHelper.InValidPostcode);
+        return new(context, new SearchAddressPage(context, false));
+    }
+
+    public BetaHomePage SearchErrorAddress()
+    {
+        searchAddressPage.SearchInValidAddress(testDataHelper.ErrorPostcode);
+        return new(context, new SearchAddressPage(context, false));
     }
 }

@@ -14,5 +14,5 @@ public class BetaSummaryPage : RedbridgeBasePage
 
     protected override string PageTitle => "Summary";
 
-    public void VerifyAddressDetails() => VerifyPage(AddressDetails, testDataHelper.Postcode);
+    public void VerifyAddressDetails() => VerifyPage(AddressDetails, testDataHelper.ValidPostcode);
 }

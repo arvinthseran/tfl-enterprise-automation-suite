@@ -10,9 +10,17 @@ public class BetaSteps
     
 
     [When(@"the user selects an address")]
-    public void WhenTheUserSelectsAnAddress() => betaSummaryPage = new BetaHomePage(_context, new SearchAddressPage(_context, true)).SearchAddress();
+    public void WhenTheUserSelectsAnAddress() => betaSummaryPage = GetBetaHomePage().SearchValidAddress();
+
+    [When(@"the user can not locate invalid postcode")]
+    public void WhenTheUserCanNotLocateInvalidPostcode() => GetBetaHomePage().SearchInValidAddress();
+
+    [When(@"the user can not locate error postcode")]
+    public void WhenTheUserCanNotLocateErrorPostcode() => GetBetaHomePage().SearchErrorAddress();
 
     [Then(@"the user should see the address summary")]
     public void ThenTheUserShouldSeeTheAddressSummary() => betaSummaryPage.VerifyAddressDetails();
+
+    private BetaHomePage GetBetaHomePage() => new(_context, new SearchAddressPage(_context, true));
 
 }

@@ -18,7 +18,7 @@ public class RecyclePage : RedbridgeBasePage
 
     public RecyclePage SearchAddress()
     {
-        searchaddressPage.SearchAddress();
+        searchaddressPage.SearchValidAddress(testDataHelper.ValidPostcode);
 
         return new RecyclePage(context, new SearchAddressPage(context, false));
     }

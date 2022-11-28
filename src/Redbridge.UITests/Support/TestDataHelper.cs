@@ -4,10 +4,14 @@ public class TestDataHelper
 {
     public TestDataHelper()
     {
-        Postcode = GetRandomElementFromListOfElements(_valid_postcode);
+        ValidPostcode = GetRandomElementFromListOfElements(_valid_postcode);
+        InValidPostcode = GetRandomElementFromListOfElements(_invalid_postcode);
+        ErrorPostcode = GetRandomElementFromListOfElements(_error_postcode);
     }
 
-    public string Postcode { get; private set; }
+    public string ValidPostcode { get; private set; }
+    public string InValidPostcode { get; private set; }
+    public string ErrorPostcode { get; private set; }
 
     public T GetRandomElementFromListOfElements<T>(List<T> elements)
     {

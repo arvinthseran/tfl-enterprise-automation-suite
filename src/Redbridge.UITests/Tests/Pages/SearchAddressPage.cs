@@ -3,12 +3,16 @@
 
 public interface ISearchAddressPage
 {
-    void SearchAddress();
+    void SearchInValidAddress(string postcode);
+
+    void SearchValidAddress(string postcode);
 }
 
 
 public class SearchAddressPage : RedbridgeBasePage, ISearchAddressPage
 {
+
+    private static By NoAddressFound => By.CssSelector(".no-address-found");
 
     private static By SearchAddressSelector => By.CssSelector(".searchAddress");
 
@@ -25,20 +29,30 @@ public class SearchAddressPage : RedbridgeBasePage, ISearchAddressPage
 
     }
 
-    public void SearchAddress()
+    public void SearchValidAddress(string postcode)
     {
-        var postcode = testDataHelper.Postcode;
-
-        enterpriseWebdriver.EnterText(SearchAddressSelector, postcode);
-
-        objectContext.Set("postcode", postcode);
-
-        enterpriseWebdriver.Click(SearchAddressButton);
+        SearchAddress(postcode);
 
         enterpriseWebdriver.FindEnabledAndDisplayedElement(AddressListHolder);
 
         var address = testDataHelper.GetRandomElementFromListOfElements(webDriver.FindElements(AddressListHolder).ToList());
 
         address.Click();
+    }
+
+    public void SearchInValidAddress(string postcode)
+    {
+        SearchAddress(postcode);
+
+        VerifyPage(NoAddressFound, "We could not locate any matching addresses.");
+    }
+
+    private void SearchAddress(string postcode)
+    {
+        enterpriseWebdriver.EnterText(SearchAddressSelector, postcode);
+
+        objectContext.Set("postcode", postcode);
+
+        enterpriseWebdriver.Click(SearchAddressButton);
     }
 }

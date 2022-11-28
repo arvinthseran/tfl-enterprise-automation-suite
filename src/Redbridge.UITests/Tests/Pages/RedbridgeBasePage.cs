@@ -1,4 +1,6 @@
-﻿namespace Redbridge.UITests.Tests.Pages;
+﻿using Redbridge.UITests.Support;
+
+namespace Redbridge.UITests.Tests.Pages;
 
 public abstract class RedbridgeBasePage : BasePage
 {

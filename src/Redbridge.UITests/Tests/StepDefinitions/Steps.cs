@@ -1,8 +1,7 @@
-﻿using Redbridge.UITests.Tests.Pages;
+﻿namespace Redbridge.UITests.Tests.StepDefinitions;
 
-namespace Redbridge.UITests.Tests.StepDefinitions;
 
-[Binding]
+[Binding, Scope(Tag = "prod")]
 public class Steps
 {
     private readonly ScenarioContext _context;
@@ -15,7 +14,7 @@ public class Steps
     public void GivenTheUserNavigatesToCheckYourBinDaysPage() => binsPage = new AccessibilityPage(_context).GoToHomePage().GoToBins();
 
     [When(@"the user selects an address")]
-    public void WhenTheUserSelectsAnAddress() => recyclePage = binsPage.GoToRecyclePage().EnterAddress();
+    public void WhenTheUserSelectsAnAddress() => recyclePage = binsPage.GoToRecyclePage().SearchAddress();
 
     [Then(@"the user should see the bin collection days")]
     public void ThenTheUserShouldSeeTheBinCollectionDays() => recyclePage.VerifyYourCollections();

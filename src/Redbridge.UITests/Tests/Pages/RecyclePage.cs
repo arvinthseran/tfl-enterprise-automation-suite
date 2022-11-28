@@ -1,20 +1,14 @@
-﻿using ConfigurationBuilder;
-
-namespace Redbridge.UITests.Tests.Pages;
+﻿namespace Redbridge.UITests.Tests.Pages;
 
 
 public class RecyclePage : RedbridgeBasePage
 {
-    public RecyclePage(ScenarioContext context): base(context)
+    private readonly ISearchAddressPage searchaddressPage;
+
+    public RecyclePage(ScenarioContext context, ISearchAddressPage searchaddressPage) : base(context)
     {
-
+        this.searchaddressPage = searchaddressPage;
     }
-
-    private static By SearchAddress => By.CssSelector(".searchAddress");
-
-    private static By SearchAddressButton => By.CssSelector(".searchAddressButton");
-
-    private static By AddressListHolder => By.CssSelector("#AddressListHolder li");
 
     private static By YourCollections => By.CssSelector(".your-collection-schedule-container");
 
@@ -22,23 +16,11 @@ public class RecyclePage : RedbridgeBasePage
 
     protected override string PageTitle => "Recycling and Refuse";
 
-    public RecyclePage EnterAddress()
+    public RecyclePage SearchAddress()
     {
-        var postcode = testDataHelper.Postcode;
+        searchaddressPage.SearchAddress();
 
-        enterpriseWebdriver.EnterText(SearchAddress, postcode);
-
-        objectContext.Set("postcode", postcode);
-
-        enterpriseWebdriver.Click(SearchAddressButton);
-
-        enterpriseWebdriver.FindEnabledAndDisplayedElement(AddressListHolder);
-
-        var address = testDataHelper.GetRandomElementFromListOfElements(webDriver.FindElements(AddressListHolder).ToList());
-
-        address.Click();
-
-        return new RecyclePage(context);
+        return new RecyclePage(context, new SearchAddressPage(context, false));
     }
     
     public void VerifyYourCollections() => VerifyPage(YourCollections, "Your collections");

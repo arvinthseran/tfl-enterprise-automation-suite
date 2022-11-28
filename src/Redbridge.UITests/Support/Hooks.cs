@@ -10,14 +10,17 @@ public class Hooks
     public Hooks(ScenarioContext context) => _context = context;
 
     [BeforeScenario(Order = 22)]
-    public void NavigateTo()
+    public void SetUpHelpers()
     {
         var projectConfig = _context.Get<ProjectConfig>();
 
         var webDriver = _context.Get<EnterpriseWebDriver>();
 
-        webDriver.GoToUrl(projectConfig.BaseUrl);
-
         _context.Set(new TestDataHelper());
+
+        if (_context.ScenarioInfo.Tags.Contains("beta")) webDriver.GoToUrl(projectConfig.BetaUrl);
+
+        else webDriver.GoToUrl(projectConfig.BaseUrl);
+
     }
 }

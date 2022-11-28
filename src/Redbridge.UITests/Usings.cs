@@ -6,3 +6,5 @@ global using OpenQA.Selenium;
 global using System;
 global using System.Collections.Generic;
 global using System.Linq;
+global using Redbridge.UITests.Tests.Pages;
+global using Redbridge.UITests.Tests.Pages.Beta;

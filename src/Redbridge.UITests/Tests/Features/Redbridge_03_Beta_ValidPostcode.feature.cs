@@ -20,22 +20,22 @@ namespace Redbridge.UITests.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Redbridge_01_BinCollection")]
-    public partial class Redbridge_01_BinCollectionFeature
+    [NUnit.Framework.DescriptionAttribute("Redbridge_03_Beta_ValidPostcode")]
+    public partial class Redbridge_03_Beta_ValidPostcodeFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "Redbridge_01_BinCollection.feature"
+#line 1 "Redbridge_03_Beta_ValidPostcode.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "Redbridge_01_BinCollection", "As a product Owner I need to test website for broken links", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "Redbridge_03_Beta_ValidPostcode", "As a product Owner I need to test website for broken links", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -74,18 +74,18 @@ namespace Redbridge.UITests.Tests.Features
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Redbridge_01_CheckBinCollectionDays")]
+        [NUnit.Framework.DescriptionAttribute("Redbridge_03_Beta_ValidPostcode")]
         [NUnit.Framework.CategoryAttribute("regression")]
         [NUnit.Framework.CategoryAttribute("redbridgecitycouncil")]
-        [NUnit.Framework.CategoryAttribute("prod")]
-        public void Redbridge_01_CheckBinCollectionDays()
+        [NUnit.Framework.CategoryAttribute("beta")]
+        public void Redbridge_03_Beta_ValidPostcode()
         {
             string[] tagsOfScenario = new string[] {
                     "regression",
                     "redbridgecitycouncil",
-                    "prod"};
+                    "beta"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Redbridge_01_CheckBinCollectionDays", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Redbridge_03_Beta_ValidPostcode", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -97,13 +97,10 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
 #line 9
- testRunner.Given("the user navigates to check your bin days page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
-#line 10
  testRunner.When("the user selects an address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 11
- testRunner.Then("the user should see the bin collection days", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line 10
+ testRunner.Then("the user should see the address summary", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

@@ -77,14 +77,16 @@ namespace Redbridge.UITests.Tests.Features
         [NUnit.Framework.DescriptionAttribute("Redbridge_02_CheckBinCollectionDays")]
         [NUnit.Framework.CategoryAttribute("regression")]
         [NUnit.Framework.CategoryAttribute("redbridgecitycouncil")]
+        [NUnit.Framework.CategoryAttribute("prod")]
         public void Redbridge_02_CheckBinCollectionDays()
         {
             string[] tagsOfScenario = new string[] {
                     "regression",
-                    "redbridgecitycouncil"};
+                    "redbridgecitycouncil",
+                    "prod"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Redbridge_02_CheckBinCollectionDays", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 7
+#line 8
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -94,13 +96,13 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 8
+#line 9
  testRunner.Given("the user navigates to check your bin days page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 9
+#line 10
  testRunner.When("the user selects an address", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 10
+#line 11
  testRunner.Then("the user should see the bin collection days", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

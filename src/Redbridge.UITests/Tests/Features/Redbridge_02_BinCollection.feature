@@ -4,6 +4,7 @@ As a product Owner I need to test website for broken links
 
 @regression
 @redbridgecitycouncil
+@prod
 Scenario: Redbridge_02_CheckBinCollectionDays
 	Given the user navigates to check your bin days page
 	When the user selects an address

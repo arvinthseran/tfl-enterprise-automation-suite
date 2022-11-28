@@ -17,6 +17,6 @@ public class BinsPage : RedbridgeBasePage
     {
         enterpriseWebdriver.Click(RecycleRefuse);
 
-        return new RecyclePage(context);
+        return new RecyclePage(context, new SearchAddressPage(context, true));
     }
 }

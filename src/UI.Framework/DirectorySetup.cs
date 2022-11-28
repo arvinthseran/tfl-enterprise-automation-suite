@@ -30,7 +30,7 @@ public class DirectorySetup
 
     private string GetDirectoryPath()
     {
-        string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestAttachments", $"{DateTime.Now:dd-MM-yyyy}", $"{DirectoryEscapePattern(_featureContext.FeatureInfo.Title)}");
+        string directory = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "TestAttachments", $"{DateTime.Now:dd-MM-yyyy}", $"{DirectoryEscapePattern(_featureContext.FeatureInfo.Title)}_{DateTime.Now:HHmmss}");
 
         return Path.GetFullPath(directory);
     }

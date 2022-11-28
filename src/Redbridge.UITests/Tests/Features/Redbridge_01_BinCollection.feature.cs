@@ -20,22 +20,22 @@ namespace Redbridge.UITests.Tests.Features
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Redbridge_01_CheckHomePage")]
-    public partial class Redbridge_01_CheckHomePageFeature
+    [NUnit.Framework.DescriptionAttribute("Redbridge_01_BinCollection")]
+    public partial class Redbridge_01_BinCollectionFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private static string[] featureTags = ((string[])(null));
         
-#line 1 "Redbridge_01_CheckHomePage.feature"
+#line 1 "Redbridge_01_BinCollection.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "Redbridge_01_CheckHomePage", "As a product Owner I need to test website for broken links", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-GB"), "Tests/Features", "Redbridge_01_BinCollection", "As a product Owner I need to test website for broken links", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         

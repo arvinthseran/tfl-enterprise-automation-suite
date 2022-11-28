@@ -1,4 +1,4 @@
-﻿Feature: Redbridge_01_CheckHomePage
+﻿Feature: Redbridge_01_BinCollection
 
 As a product Owner I need to test website for broken links
 
